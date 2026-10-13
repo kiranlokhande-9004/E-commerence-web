@@ -1,0 +1,6 @@
+{
+  "name": "Bomato",
+  "description": "Modern, interactive e-commerce storefront for everyday tech and lifestyle essentials with 3D product interaction.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

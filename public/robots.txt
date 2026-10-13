@@ -1,0 +1,7 @@
+# robots.txt for Bomato
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /api/
+
+Sitemap: /sitemap.xml
