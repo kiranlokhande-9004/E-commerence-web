@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { ArrowLeft, Zap, Sparkles, Clock } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
-import { PRODUCTS, SALE_ENDS_AT } from '../../data/products';
+import { SALE_ENDS_AT } from '../../data/products';
 import { ProductCard } from '../product/ProductCard';
 
 export const DealsView: React.FC = () => {
-  const { setActiveTab } = useStore();
+  const { setActiveTab, products } = useStore();
 
   // Filter products with active discount, sorted by largest discount percent descending
   const dealProducts = useMemo(() => {
-    return PRODUCTS.filter(
+    return products.filter(
       (p) =>
         (p.discountPercent && p.discountPercent > 0) ||
         (p.originalPrice && p.originalPrice > p.price)
@@ -18,7 +18,7 @@ export const DealsView: React.FC = () => {
       const discB = b.discountPercent || (b.originalPrice ? Math.round(((b.originalPrice - b.price) / b.originalPrice) * 100) : 0);
       return discB - discA;
     });
-  }, []);
+  }, [products]);
 
   // Countdown timer derived from SALE_ENDS_AT
   const [timeLeft, setTimeLeft] = useState<{

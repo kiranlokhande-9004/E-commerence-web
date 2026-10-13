@@ -83,13 +83,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {/* Meta Info */}
       <div className="mt-2 space-y-1">
-        <p className="text-[11px] font-bold text-[#777269] uppercase tracking-wider">
-          {product.brand}
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-[11px] font-bold text-[#777269] uppercase tracking-wider">
+            {product.brand} · <span className="text-[#205BE8]">{product.category}</span>
+          </p>
+          {product.sku && (
+            <span className="text-[10px] font-mono text-[#777269]/80">{product.sku}</span>
+          )}
+        </div>
 
         <h3 className="text-sm font-bold text-[#201F1D] group-hover:text-[#205BE8] transition-colors line-clamp-1">
           {product.name}
         </h3>
+
+        {product.description && (
+          <p className="text-xs text-[#777269] line-clamp-1 leading-relaxed">
+            {product.description}
+          </p>
+        )}
 
         {/* Star Rating */}
         <div className="flex items-center gap-1.5 pt-0.5">
@@ -110,16 +121,33 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </span>
         </div>
 
-        {/* Price Row */}
-        <div className="flex items-baseline gap-2 pt-1.5">
-          <span className="text-base font-extrabold text-[#201F1D] font-mono tabular-nums">
-            ${product.price.toFixed(2)}
-          </span>
-          {product.originalPrice && (
-            <span className="text-xs text-[#777269] line-through font-mono tabular-nums">
-              ${product.originalPrice.toFixed(2)}
+        {/* Price Row & Stock Badge */}
+        <div className="flex items-baseline justify-between pt-1.5">
+          <div className="flex items-baseline gap-2">
+            <span className="text-base font-extrabold text-[#201F1D] font-mono tabular-nums">
+              ${product.price.toFixed(2)}
             </span>
-          )}
+            {product.originalPrice && (
+              <span className="text-xs text-[#777269] line-through font-mono tabular-nums">
+                ${product.originalPrice.toFixed(2)}
+              </span>
+            )}
+          </div>
+
+          {/* Stock availability indicator */}
+          <div className="text-[11px]">
+            {product.inStock && product.stockCount > 0 ? (
+              <span className="inline-flex items-center gap-1 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>{product.stockCount} in stock</span>
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-rose-600 font-semibold bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                <span>Out of stock</span>
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
@@ -127,18 +155,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="mt-4 pt-1">
         <button
           onClick={handleAddToCart}
+          disabled={!product.inStock || product.stockCount <= 0}
           className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-warm ${
-            justAdded
+            !product.inStock || product.stockCount <= 0
+              ? 'bg-[#E7E1D7] text-[#777269] cursor-not-allowed shadow-none'
+              : justAdded
               ? 'bg-emerald-600 text-white shadow-emerald-600/20'
               : 'bg-[#205BE8] hover:bg-[#174AC4] text-white active:scale-[0.98]'
           }`}
-          aria-label={`Add ${product.name} to cart`}
+          aria-label={!product.inStock || product.stockCount <= 0 ? `${product.name} is out of stock` : `Add ${product.name} to cart`}
         >
           {justAdded ? (
             <>
               <Check className="w-4 h-4 animate-bounce" />
               <span>Added!</span>
             </>
+          ) : !product.inStock || product.stockCount <= 0 ? (
+            <span>Out of Stock</span>
           ) : (
             <>
               <ShoppingBag className="w-4 h-4" />

@@ -9,7 +9,6 @@ import {
   Star,
 } from 'lucide-react';
 import { Product } from '../../types';
-import { PRODUCTS } from '../../data/products';
 import { useStore } from '../../context/StoreContext';
 import { AssetSlot } from '../common/AssetSlot';
 
@@ -19,7 +18,7 @@ interface ProductSpinViewerProps {
 }
 
 export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, onClose }) => {
-  const { addToCart, setSelectedProduct } = useStore();
+  const { addToCart, setSelectedProduct, products } = useStore();
 
   // Selected options (if product has sizes or colors)
   const [selectedSize, setSelectedSize] = useState<string | undefined>(product.sizes?.[0]);
@@ -75,9 +74,13 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
   }, [currentIdx, images]);
 
   // Catalog prev / next navigation
-  const catalogIdx = useMemo(() => PRODUCTS.findIndex((p) => p.id === product.id), [product.id]);
-  const prevProduct = PRODUCTS[(catalogIdx - 1 + PRODUCTS.length) % PRODUCTS.length];
-  const nextProduct = PRODUCTS[(catalogIdx + 1) % PRODUCTS.length];
+  const catalogList = products && products.length > 0 ? products : [product];
+  const catalogIdx = useMemo(() => {
+    const idx = catalogList.findIndex((p) => p.id === product.id);
+    return idx >= 0 ? idx : 0;
+  }, [catalogList, product.id]);
+  const prevProduct = catalogList[(catalogIdx - 1 + catalogList.length) % catalogList.length];
+  const nextProduct = catalogList[(catalogIdx + 1) % catalogList.length];
 
   // Image change handler with 3D turn transition
   const goToImage = useCallback(
@@ -238,7 +241,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
               <ChevronLeft className="w-5 h-5" />
             </button>
             <span className="text-xs font-mono text-[#777269] tabular-nums">
-              {catalogIdx + 1} / {PRODUCTS.length}
+              {catalogIdx + 1} / {catalogList.length}
             </span>
             <button
               onClick={() => setSelectedProduct(nextProduct)}
@@ -308,10 +311,21 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
 
               {/* Stock Status Indicator */}
               <div className="pt-2 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                <span className="text-xs font-semibold text-[#201F1D]">
-                  In Stock ({product.stockCount} units available)
-                </span>
+                {product.inStock && product.stockCount > 0 ? (
+                  <>
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-semibold text-emerald-800">
+                      In Stock ({product.stockCount} units available)
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                    <span className="text-xs font-semibold text-rose-600">
+                      Out of Stock (Currently Unavailable)
+                    </span>
+                  </>
+                )}
               </div>
             </div>
 
@@ -533,8 +547,11 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                   {/* Add To Cart Primary Action */}
                   <button
                     onClick={handleAddToCart}
+                    disabled={!product.inStock || product.stockCount <= 0}
                     className={`flex-1 py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-warm transition-all cursor-pointer ${
-                      addedAnimation
+                      !product.inStock || product.stockCount <= 0
+                        ? 'bg-[#E7E1D7] text-[#777269] cursor-not-allowed shadow-none'
+                        : addedAnimation
                         ? 'bg-emerald-600 text-white shadow-emerald-500/20'
                         : 'bg-[#205BE8] hover:bg-[#174AC4] text-white active:scale-[0.98]'
                     }`}
@@ -544,6 +561,8 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                         <Check className="w-5 h-5 animate-bounce" />
                         <span>Added to Cart!</span>
                       </>
+                    ) : !product.inStock || product.stockCount <= 0 ? (
+                      <span>Out of Stock</span>
                     ) : (
                       <>
                         <ShoppingBag className="w-5 h-5" />

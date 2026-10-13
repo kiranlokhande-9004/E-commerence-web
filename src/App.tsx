@@ -24,13 +24,21 @@ import { PrivacyPolicyView, TermsConditionsView } from './components/legal/Legal
 import { CookieBanner } from './components/common/CookieBanner';
 import { NotFoundView } from './components/common/NotFoundView';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
-import { PRODUCTS } from './data/products';
 
 // Lazy load WalkingCat so first paint is never delayed
 const WalkingCat = React.lazy(() => import('./components/cat/WalkingCat'));
 
 const MainContent: React.FC = () => {
-  const { activeTab, setActiveTab, selectedProduct, setSelectedProduct } = useStore();
+  const {
+    activeTab,
+    setActiveTab,
+    selectedProduct,
+    setSelectedProduct,
+    products,
+    isLoadingProducts,
+    productsError,
+    refreshProducts,
+  } = useStore();
 
   // Dynamic meta title and description per page
   useEffect(() => {
@@ -147,11 +155,58 @@ const MainContent: React.FC = () => {
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                {PRODUCTS.slice(0, 4).map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
+              {/* Loading State */}
+              {isLoadingProducts && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                  {[1, 2, 3, 4].map((n) => (
+                    <div key={n} className="bg-white border border-[#E7E1D7] rounded-2xl p-4 animate-pulse space-y-3 shadow-warm">
+                      <div className="w-full aspect-square bg-[#F0EDE6] rounded-xl" />
+                      <div className="h-3 bg-[#F0EDE6] rounded w-1/3" />
+                      <div className="h-4 bg-[#F0EDE6] rounded w-3/4" />
+                      <div className="h-4 bg-[#F0EDE6] rounded w-1/2" />
+                      <div className="h-10 bg-[#F0EDE6] rounded-xl w-full mt-2" />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Error State */}
+              {!isLoadingProducts && productsError && (
+                <div className="bg-rose-50 border border-rose-200 rounded-2xl p-6 text-center shadow-warm">
+                  <div className="w-10 h-10 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center mb-2 font-bold text-sm">!</div>
+                  <h3 className="text-sm font-bold text-rose-900">Failed to load products</h3>
+                  <p className="text-xs text-rose-700 mt-1 mb-3">{productsError}</p>
+                  <button
+                    onClick={() => refreshProducts()}
+                    className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    Retry Connection
+                  </button>
+                </div>
+              )}
+
+              {/* Empty Product State */}
+              {!isLoadingProducts && !productsError && products.length === 0 && (
+                <div className="bg-white border border-[#E7E1D7] rounded-2xl p-8 text-center shadow-warm">
+                  <h3 className="text-sm font-bold text-[#201F1D]">No products found in database</h3>
+                  <p className="text-xs text-[#777269] mt-1 mb-3">No product records were returned from http://localhost:8080/api/products.</p>
+                  <button
+                    onClick={() => refreshProducts()}
+                    className="px-4 py-2 bg-[#205BE8] hover:bg-[#174AC4] text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    Check for Products
+                  </button>
+                </div>
+              )}
+
+              {/* Populated Product Grid */}
+              {!isLoadingProducts && !productsError && products.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                  {products.slice(0, 4).map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -184,11 +239,29 @@ const MainContent: React.FC = () => {
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                {PRODUCTS.slice(4, 8).map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
+              {/* Loading State */}
+              {isLoadingProducts && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                  {[1, 2, 3, 4].map((n) => (
+                    <div key={n} className="bg-white border border-[#E7E1D7] rounded-2xl p-4 animate-pulse space-y-3 shadow-warm">
+                      <div className="w-full aspect-square bg-[#F0EDE6] rounded-xl" />
+                      <div className="h-3 bg-[#F0EDE6] rounded w-1/3" />
+                      <div className="h-4 bg-[#F0EDE6] rounded w-3/4" />
+                      <div className="h-4 bg-[#F0EDE6] rounded w-1/2" />
+                      <div className="h-10 bg-[#F0EDE6] rounded-xl w-full mt-2" />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Empty / Error / Grid */}
+              {!isLoadingProducts && !productsError && products.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                  {(products.length > 4 ? products.slice(4, 8) : products).map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

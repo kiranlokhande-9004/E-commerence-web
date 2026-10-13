@@ -1,18 +1,17 @@
 import React, { useMemo } from 'react';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
-import { PRODUCTS } from '../../data/products';
 import { ProductCard } from '../product/ProductCard';
 
 export const NewArrivalsView: React.FC = () => {
-  const { setActiveTab } = useStore();
+  const { setActiveTab, products } = useStore();
 
   const newArrivals = useMemo(() => {
-    return PRODUCTS.filter((p) => {
+    return products.filter((p) => {
       const badge = p.badge?.toLowerCase();
       return badge === 'new' || !p.discountPercent;
     });
-  }, []);
+  }, [products]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in">

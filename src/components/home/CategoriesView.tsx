@@ -1,24 +1,25 @@
 import React, { useMemo } from 'react';
 import { ArrowLeft, ArrowRight, Backpack, Headphones, Watch, Wallet, Gamepad2, Glasses, Luggage, LayoutGrid } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
-import { CATEGORIES, PRODUCTS } from '../../data/products';
+import { CATEGORIES } from '../../data/products';
 import { AssetSlot } from '../common/AssetSlot';
 
 export const CategoriesView: React.FC = () => {
-  const { setActiveTab, setSelectedCategory } = useStore();
+  const { setActiveTab, setSelectedCategory, products } = useStore();
 
   const countsByCategory = useMemo(() => {
     const map: Record<string, number> = {};
     CATEGORIES.forEach((cat) => {
       map[cat.id] = 0;
     });
-    PRODUCTS.forEach((prod) => {
-      if (map[prod.category] !== undefined) {
-        map[prod.category] += 1;
+    products.forEach((prod) => {
+      const catKey = (prod.category || '').toLowerCase();
+      if (map[catKey] !== undefined) {
+        map[catKey] += 1;
       }
     });
     return map;
-  }, []);
+  }, [products]);
 
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {

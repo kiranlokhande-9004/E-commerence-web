@@ -1,11 +1,15 @@
 import React, { useMemo } from 'react';
 import { SlidersHorizontal, Search, X } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
-import { PRODUCTS, CATEGORIES } from '../../data/products';
+import { CATEGORIES } from '../../data/products';
 import { ProductCard } from '../product/ProductCard';
 
 export const ShopView: React.FC = () => {
   const {
+    products,
+    isLoadingProducts,
+    productsError,
+    refreshProducts,
     selectedCategory,
     setSelectedCategory,
     searchQuery,
@@ -15,7 +19,7 @@ export const ShopView: React.FC = () => {
   } = useStore();
 
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((item) => {
+    return products.filter((item) => {
       // Category filter
       if (selectedCategory && item.category !== selectedCategory) {
         return false;
@@ -37,7 +41,7 @@ export const ShopView: React.FC = () => {
       if (sortBy === 'rating') return b.rating - a.rating;
       return 0; // 'featured' retains natural catalog order
     });
-  }, [selectedCategory, searchQuery, sortBy]);
+  }, [products, selectedCategory, searchQuery, sortBy]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in">
@@ -50,7 +54,7 @@ export const ShopView: React.FC = () => {
               : 'All Products'}
           </h1>
           <p className="text-xs sm:text-sm text-[#777269] mt-1">
-            Showing {filteredProducts.length} of {PRODUCTS.length} curated essentials
+            Showing {filteredProducts.length} of {products.length} curated essentials
           </p>
         </div>
 
@@ -116,32 +120,75 @@ export const ShopView: React.FC = () => {
         )}
       </div>
 
-      {/* Product Grid */}
-      {filteredProducts.length === 0 ? (
-        <div className="bg-white border border-[#E7E1D7] rounded-3xl p-12 text-center max-w-md mx-auto shadow-warm">
-          <div className="w-14 h-14 rounded-2xl bg-[#F0EDE6] text-[#777269] mx-auto flex items-center justify-center mb-3">
-            <Search className="w-7 h-7" />
-          </div>
-          <h3 className="text-base font-bold text-[#201F1D]">No matching items found</h3>
-          <p className="text-xs text-[#777269] mt-1 mb-4">
-            Try adjusting your search criteria or resetting filters to browse all accessories.
-          </p>
-          <button
-            onClick={() => {
-              setSelectedCategory(null);
-              setSearchQuery('');
-            }}
-            className="px-4 py-2.5 bg-[#205BE8] hover:bg-[#174AC4] text-white rounded-xl text-xs font-bold shadow-warm cursor-pointer transition-colors"
-          >
-            Reset Filters
-          </button>
-        </div>
-      ) : (
+      {/* Loading State */}
+      {isLoadingProducts && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+            <div key={n} className="bg-white border border-[#E7E1D7] rounded-2xl p-4 animate-pulse space-y-3 shadow-warm">
+              <div className="w-full aspect-square bg-[#F0EDE6] rounded-xl" />
+              <div className="h-3 bg-[#F0EDE6] rounded w-1/3" />
+              <div className="h-4 bg-[#F0EDE6] rounded w-3/4" />
+              <div className="h-4 bg-[#F0EDE6] rounded w-1/2" />
+              <div className="h-10 bg-[#F0EDE6] rounded-xl w-full mt-2" />
+            </div>
           ))}
         </div>
+      )}
+
+      {/* Error State */}
+      {!isLoadingProducts && productsError && (
+        <div className="bg-rose-50 border border-rose-200 rounded-3xl p-10 text-center max-w-lg mx-auto shadow-warm">
+          <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center mb-3 font-bold text-base">!</div>
+          <h3 className="text-base font-bold text-rose-900">Failed to load catalog from API</h3>
+          <p className="text-xs text-rose-700 mt-1 mb-4">{productsError}</p>
+          <button
+            onClick={() => refreshProducts()}
+            className="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-warm"
+          >
+            Retry Connection
+          </button>
+        </div>
+      )}
+
+      {/* Product Grid & Empty Filter State */}
+      {!isLoadingProducts && !productsError && (
+        filteredProducts.length === 0 ? (
+          <div className="bg-white border border-[#E7E1D7] rounded-3xl p-12 text-center max-w-md mx-auto shadow-warm">
+            <div className="w-14 h-14 rounded-2xl bg-[#F0EDE6] text-[#777269] mx-auto flex items-center justify-center mb-3">
+              <Search className="w-7 h-7" />
+            </div>
+            <h3 className="text-base font-bold text-[#201F1D]">No matching items found</h3>
+            <p className="text-xs text-[#777269] mt-1 mb-4">
+              {products.length === 0
+                ? 'No products available in the database. Ensure the backend API is running.'
+                : 'Try adjusting your search criteria or resetting filters to browse all accessories.'}
+            </p>
+            {products.length > 0 ? (
+              <button
+                onClick={() => {
+                  setSelectedCategory(null);
+                  setSearchQuery('');
+                }}
+                className="px-4 py-2.5 bg-[#205BE8] hover:bg-[#174AC4] text-white rounded-xl text-xs font-bold shadow-warm cursor-pointer transition-colors"
+              >
+                Reset Filters
+              </button>
+            ) : (
+              <button
+                onClick={() => refreshProducts()}
+                className="px-4 py-2.5 bg-[#205BE8] hover:bg-[#174AC4] text-white rounded-xl text-xs font-bold shadow-warm cursor-pointer transition-colors"
+              >
+                Refresh Products
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )
       )}
     </div>
   );

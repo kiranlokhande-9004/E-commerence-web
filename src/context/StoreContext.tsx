@@ -15,6 +15,10 @@ interface StoreContextType {
   setSelectedCategory: (cat: string | null) => void;
   sortBy: 'featured' | 'price-asc' | 'price-desc' | 'rating';
   setSortBy: (sort: 'featured' | 'price-asc' | 'price-desc' | 'rating') => void;
+  products: Product[];
+  isLoadingProducts: boolean;
+  productsError: string | null;
+  refreshProducts: () => Promise<void>;
 
   // Cart
   cart: CartItem[];
@@ -66,6 +70,103 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState<boolean>(true);
+  const [productsError, setProductsError] = useState<string | null>(null);
+
+  const getCategoryFallbackImage = (category?: string): string => {
+    const cat = (category || '').toLowerCase();
+    if (cat.includes('headphone') || cat.includes('audio')) return '/products/wh-1000xm5.webp';
+    if (cat.includes('watch')) return '/products/galaxy-watch-6.webp';
+    if (cat.includes('backpack') || cat.includes('fashion') || cat.includes('bag')) return '/products/classic-backpack.webp';
+    if (cat.includes('game') || cat.includes('keyboard')) return '/products/k2-keyboard.webp';
+    if (cat.includes('power') || cat.includes('charge')) return '/products/737-powerbank.webp';
+    if (cat.includes('speaker')) return '/products/go-3-speaker.webp';
+    return '/products/wh-1000xm5.webp';
+  };
+
+  const refreshProducts = async () => {
+    setIsLoadingProducts(true);
+    setProductsError(null);
+    try {
+      const res = await fetch('http://localhost:8080/api/products');
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: Failed to fetch products from backend API`);
+      }
+      const data = await res.json();
+      if (!Array.isArray(data)) {
+        throw new Error('API returned invalid data format (expected array)');
+      }
+
+      const normalized: Product[] = data.map((item: any) => {
+        const id = String(item.id);
+        const stockCount = typeof item.stockCount === 'number'
+          ? item.stockCount
+          : (parseInt(item.stockCount, 10) || 0);
+        const inStock = item.inStock !== undefined
+          ? Boolean(item.inStock && stockCount > 0)
+          : stockCount > 0;
+        const price = typeof item.price === 'number'
+          ? item.price
+          : (parseFloat(item.price) || 0);
+        const originalPrice = item.originalPrice != null
+          ? (typeof item.originalPrice === 'number' ? item.originalPrice : parseFloat(item.originalPrice))
+          : undefined;
+        const discountPercent = item.discountPercent != null
+          ? (typeof item.discountPercent === 'number' ? item.discountPercent : parseInt(item.discountPercent, 10))
+          : undefined;
+        const rating = typeof item.rating === 'number'
+          ? item.rating
+          : (parseFloat(item.rating) || 5.0);
+        const reviewsCount = typeof item.reviewsCount === 'number'
+          ? item.reviewsCount
+          : (parseInt(item.reviewsCount, 10) || 0);
+        const category = item.category || 'Accessories';
+        const fallbackImg = getCategoryFallbackImage(category);
+
+        const images: string[] = Array.isArray(item.images) && item.images.length > 0
+          ? item.images
+          : (item.image ? [item.image] : [fallbackImg]);
+        const image = item.image || images[0] || fallbackImg;
+
+        return {
+          id,
+          name: item.name || 'Unnamed Product',
+          brand: item.brand || 'BOLT',
+          category,
+          price,
+          originalPrice,
+          discountPercent,
+          rating,
+          reviewsCount,
+          description: item.description || '',
+          badge: item.badge || undefined,
+          inStock,
+          stockCount,
+          images,
+          image,
+          modelUrl: item.modelUrl || undefined,
+          sku: item.sku || `BOLT-${id}`,
+          features: Array.isArray(item.features) ? item.features : [],
+          sizes: Array.isArray(item.sizes) ? item.sizes : undefined,
+          colors: Array.isArray(item.colors) ? item.colors : undefined,
+        };
+      });
+
+      setProducts(normalized);
+      setProductsError(null);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Unable to connect to backend server at http://localhost:8080';
+      setProductsError(msg);
+      setProducts([]);
+    } finally {
+      setIsLoadingProducts(false);
+    }
+  };
+
+  useEffect(() => {
+    refreshProducts();
+  }, []);
 
   // Enforce Light Theme Only per design requirement
   useEffect(() => {
@@ -85,19 +186,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
-      return [
-        {
-          product: PRODUCTS[0],
-          quantity: 1,
-        },
-      ];
+      return [];
     } catch {
-      return [
-        {
-          product: PRODUCTS[0],
-          quantity: 1,
-        },
-      ];
+      return [];
     }
   });
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
@@ -230,11 +321,11 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       }
       if (rawHash.startsWith('product=')) {
         const prodId = rawHash.replace('product=', '');
-        const found = PRODUCTS.find((p) => p.id === prodId);
+        const found = products.find((p) => p.id === prodId);
         if (found) {
           setSelectedProductState(found);
           setActiveTabState('product-detail');
-        } else {
+        } else if (!isLoadingProducts) {
           setActiveTabState('not-found');
         }
       } else if ([
@@ -261,7 +352,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     handleHash();
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  }, [products, isLoadingProducts]);
 
   const setActiveTab = (tab: string) => {
     setActiveTabState(tab);
@@ -431,6 +522,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setSelectedCategory,
         sortBy,
         setSortBy,
+        products,
+        isLoadingProducts,
+        productsError,
+        refreshProducts,
         cart,
         isCartOpen,
         setIsCartOpen,

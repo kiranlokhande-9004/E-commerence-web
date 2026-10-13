@@ -9,22 +9,21 @@ import {
   Truck,
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
-import { PRODUCTS } from '../../data/products';
 import { AssetSlot } from '../common/AssetSlot';
 
 export const HeroBanner: React.FC = () => {
-  const { setActiveTab, setSelectedProduct, setSelectedCategory } = useStore();
+  const { setActiveTab, setSelectedProduct, setSelectedCategory, products } = useStore();
   const [isPlayingPreview, setIsPlayingPreview] = useState(false);
 
-  // Sony WH-1000XM5 flagship headphones from catalog
+  // Dynamic flagship products from catalog
   const flagshipProduct =
-    PRODUCTS.find((p) => p.id === 'wh-1000xm5-headphones') || PRODUCTS[0];
+    products.find((p) => p.id === 'wh-1000xm5-headphones' || p.id === '1' || p.category.toLowerCase().includes('headphone')) || products[0];
   const airpodsProduct =
-    PRODUCTS.find((p) => p.id === 'airpods-pro-2') || PRODUCTS[0];
+    products.find((p) => p.id === 'airpods-pro-2' || p.id === '2' || p.category.toLowerCase().includes('watch')) || products[1] || products[0];
   const speakerProduct =
-    PRODUCTS.find((p) => p.id === 'go-3-speaker') || PRODUCTS[4];
+    products.find((p) => p.id === 'go-3-speaker' || p.id === '3' || p.category.toLowerCase().includes('backpack')) || products[2] || products[0];
   const accessoriesProduct =
-    PRODUCTS.find((p) => p.id === '737-power-bank') || PRODUCTS[6];
+    products.find((p) => p.id === '737-power-bank' || p.category.toLowerCase().includes('access')) || products[3] || products[0];
 
   const handleOpenFlagship = () => {
     if (flagshipProduct) {
