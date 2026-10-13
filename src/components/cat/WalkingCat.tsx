@@ -6,7 +6,7 @@ import { useStore } from '../../context/StoreContext';
 
 /**
  * Creates a delightful, procedural 3D stylized low-poly cat in Three.js
- * Palette matches Bomato's warm tokens: warm charcoal coat (#2A2421),
+ * Palette matches BOLT 2.0's warm tokens: warm charcoal coat (#2A2421),
  * cream chest/paws (#F0EDE6), brand blue collar (#205BE8), and golden bell.
  */
 function createProceduralCat() {
@@ -30,7 +30,7 @@ function createProceduralCat() {
   const eyeMat = new THREE.MeshBasicMaterial({ color: 0x38a169 }); // emerald
   const pupilMat = new THREE.MeshBasicMaterial({ color: 0x111111 });
   const collarMat = new THREE.MeshStandardMaterial({
-    color: 0x205be8, // Bomato brand blue #205BE8
+    color: 0x205be8, // BOLT 2.0 brand blue #205BE8
     roughness: 0.3,
   });
   const bellMat = new THREE.MeshStandardMaterial({

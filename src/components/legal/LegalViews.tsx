@@ -35,7 +35,7 @@ export const PrivacyPolicyView: React.FC = () => {
         <section className="space-y-2">
           <h2 className="text-base font-bold text-[#201F1D]">1. Information We Collect</h2>
           <p>
-            When you interact with <strong>[BUSINESS_LEGAL_NAME]</strong> (operating as Bomato), we collect information necessary to fulfill your orders and improve store usability:
+            When you interact with <strong>[BUSINESS_LEGAL_NAME]</strong> (operating as BOLT 2.0), we collect information necessary to fulfill your orders and improve store usability:
           </p>
           <ul className="list-disc list-inside space-y-1 text-[#777269]">
             <li><strong>Order Fulfillment Data:</strong> Full name, shipping destination, phone number, and billing email.</li>
@@ -104,7 +104,7 @@ export const TermsConditionsView: React.FC = () => {
         <section className="space-y-2">
           <h2 className="text-base font-bold text-[#201F1D]">1. Acceptance of Terms</h2>
           <p>
-            By purchasing goods or browsing <strong>Bomato</strong>, you agree to be bound by these standard terms and conditions provided by <strong>[LEGAL_BUSINESS_NAME_PLACEHOLDER]</strong>.
+            By purchasing goods or browsing <strong>BOLT 2.0</strong>, you agree to be bound by these standard terms and conditions provided by <strong>[LEGAL_BUSINESS_NAME_PLACEHOLDER]</strong>.
           </p>
         </section>
 

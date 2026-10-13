@@ -140,7 +140,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm text-[#777269]">
               <li>
                 <button onClick={() => setActiveTab('about')} className="hover:text-[#205BE8] transition-colors cursor-pointer">
-                  About Bomato
+                  About BOLT 2.0
                 </button>
               </li>
               <li>
@@ -159,7 +159,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom copyright */}
         <div className="pt-8 mt-8 border-t border-[#E7E1D7] flex flex-col sm:flex-row items-center justify-between text-xs text-[#777269] gap-4">
-          <p>© {new Date().getFullYear()} Bomato Essentials Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} BOLT 2.0 Inc. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs font-medium">
             <span>Encrypted 256-Bit SSL Checkout</span>
             <span>·</span>

@@ -553,7 +553,7 @@ export const CheckoutView: React.FC = () => {
             <div className="bg-[#F0EDE6]/50 border border-[#E7E1D7] rounded-xl p-3 text-[11px] text-[#777269] space-y-1">
               <p className="flex items-center gap-1.5 font-semibold text-[#201F1D]">
                 <ShieldCheck className="w-4 h-4 text-[#205BE8]" />
-                <span>Bomato Buyer Protection Guarantee</span>
+                <span>BOLT 2.0 Buyer Protection Guarantee</span>
               </p>
               <p>Every purchase includes comprehensive tracking, insurance, and authentic merchandise warranty.</p>
             </div>

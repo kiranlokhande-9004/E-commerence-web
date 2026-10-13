@@ -33,7 +33,7 @@ export const CartDrawer: React.FC = () => {
     setPromoError('');
     const success = applyPromoCode(inputPromo);
     if (!success) {
-      setPromoError('Invalid code. Try "SAVE10" or "WELCOME20"');
+      setPromoError('Invalid code. Try "BOLT10" or "WELCOME20"');
     } else {
       setInputPromo('');
     }
@@ -210,7 +210,7 @@ export const CartDrawer: React.FC = () => {
                     <Tag className="w-3.5 h-3.5 text-[#777269] absolute left-3 top-2.5" />
                     <input
                       type="text"
-                      placeholder="Promo code (SAVE10)"
+                      placeholder="Promo code (BOLT10)"
                       value={inputPromo}
                       onChange={(e) => setInputPromo(e.target.value)}
                       className="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-[#E7E1D7] rounded-xl focus:border-[#205BE8] focus:ring-1 focus:ring-[#205BE8]/20 focus:outline-hidden uppercase text-[#201F1D]"

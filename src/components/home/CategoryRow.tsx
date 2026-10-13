@@ -58,10 +58,10 @@ export const CategoryRow: React.FC = () => {
           <button
             key={cat.id}
             onClick={() => handleCategorySelect(cat.id)}
-            className="group bg-white border border-[#E7E1D7] hover:border-[#205BE8]/50 rounded-2xl p-4 flex flex-col items-center justify-center text-center transition-all shadow-warm hover:shadow-warm-hover focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8] cursor-pointer"
+            className="group bg-white border border-[#E7E1D7] hover:border-[#205BE8]/50 rounded-2xl p-4 flex flex-col items-center justify-center text-center transition-all duration-300 shadow-warm hover:shadow-warm-hover hover:-translate-y-1 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8] cursor-pointer"
           >
             {/* Neumorphic Icon Container */}
-            <div className="w-14 h-14 rounded-xl neu-flat-secondary group-hover:border-[#205BE8]/30 flex items-center justify-center mb-3 transition-all group-hover:scale-105">
+            <div className="w-14 h-14 rounded-xl neu-flat-secondary group-hover:border-[#205BE8]/30 group-hover:shadow-warm flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-105">
               {getCategoryIcon(cat.iconName)}
             </div>
 

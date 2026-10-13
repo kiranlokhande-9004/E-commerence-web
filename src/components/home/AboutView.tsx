@@ -4,7 +4,7 @@ import { useStore } from '../../context/StoreContext';
 import { AssetSlot } from '../common/AssetSlot';
 
 const ABOUT_SAMPLE_CONFIG = {
-  customerSupportEmail: 'support@bomatoessentials.com',
+  customerSupportEmail: 'support@bolt20.com',
   inquiryHours: 'Monday – Friday, 9:00 AM – 6:00 PM EST',
   responseWindow: 'Typically responds within 2 hours',
 };
@@ -78,10 +78,10 @@ export const AboutView: React.FC = () => {
             Craftsmanship & Everyday Utility
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#201F1D] tracking-tight">
-            About Bomato
+            About BOLT 2.0
           </h1>
           <p className="text-sm text-[#777269] leading-relaxed">
-            Bomato designs and curates durable everyday technology gear, high-fidelity audio equipment, and resilient travel accessories. We prioritize tactile materials, functional ergonomics, and timeless design over disposable trends.
+            BOLT 2.0 designs and curates durable everyday technology gear, high-fidelity audio equipment, and resilient travel accessories. We prioritize tactile materials, functional ergonomics, and timeless design over disposable trends.
           </p>
         </div>
 

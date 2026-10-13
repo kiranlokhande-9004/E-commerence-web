@@ -28,7 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="group bg-white border border-[#E7E1D7] hover:border-[#205BE8]/50 rounded-2xl p-4 flex flex-col justify-between shadow-warm hover:shadow-warm-hover cursor-pointer relative transition-all"
+      className="group bg-white border border-[#E7E1D7] hover:border-[#205BE8]/60 rounded-2xl p-4 flex flex-col justify-between shadow-warm hover:shadow-warm-hover hover:-translate-y-1.5 cursor-pointer relative transition-all duration-300"
       role="article"
       aria-label={`${product.brand} ${product.name}`}
     >
@@ -37,10 +37,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="flex items-center gap-1.5 flex-wrap">
           {product.badge && (
             <span
-              className={`text-[11px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
+              className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
                 product.badge.startsWith('-') || product.badge.toLowerCase().includes('off')
-                  ? 'bg-rose-500 text-white'
-                  : 'bg-[#205BE8] text-white'
+                  ? 'bg-rose-500 text-white shadow-xs'
+                  : 'bg-[#205BE8] text-white shadow-xs'
               }`}
             >
               {product.badge}
@@ -61,23 +61,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           }}
           className={`p-2 rounded-xl transition-all cursor-pointer ${
             isFavorite
-              ? 'text-rose-500 bg-rose-50 shadow-xs'
+              ? 'text-rose-500 bg-rose-50 shadow-xs scale-105'
               : 'text-[#777269] hover:text-rose-500 hover:bg-[#F0EDE6]'
           }`}
           aria-label={isFavorite ? 'Remove from wishlist' : 'Add to wishlist'}
         >
-          <Heart className={`w-4 h-4 ${isFavorite ? 'fill-rose-500' : ''}`} />
+          <Heart className={`w-4 h-4 transition-transform group-hover:scale-110 ${isFavorite ? 'fill-rose-500' : ''}`} />
         </button>
       </div>
 
       {/* Product Image Slot: consistent square frame with soft surface */}
-      <div className="my-2 w-full aspect-square bg-[#F0EDE6]/50 rounded-xl p-3 flex items-center justify-center overflow-hidden border border-[#E7E1D7]/50 relative">
+      <div className="my-2 w-full aspect-square bg-[#F0EDE6]/40 rounded-xl p-3 flex items-center justify-center overflow-hidden border border-[#E7E1D7]/60 relative">
         <AssetSlot
           src={product.images?.[0] || product.image || ''}
           alt={product.name}
           category={product.category}
           aspectRatio="aspect-square"
-          className="rounded-lg object-contain w-full h-full transition-transform duration-300 group-hover:scale-[1.03]"
+          className="rounded-lg object-contain w-full h-full transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 

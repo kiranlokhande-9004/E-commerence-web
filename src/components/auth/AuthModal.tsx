@@ -74,8 +74,8 @@ export const AuthModal: React.FC = () => {
             </h2>
             <p className="text-xs text-[#777269] mt-1">
               {mode === 'login'
-                ? 'Welcome back to Bomato. Access saved carts & orders.'
-                : 'Join Bomato for priority shipping and members-only deals.'}
+                ? 'Welcome back to BOLT 2.0. Access saved carts & orders.'
+                : 'Join BOLT 2.0 for priority shipping and members-only deals.'}
             </p>
           </div>
 

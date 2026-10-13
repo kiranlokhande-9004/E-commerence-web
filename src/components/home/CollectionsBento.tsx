@@ -28,7 +28,7 @@ export const CollectionsBento: React.FC = () => {
       {/* Grid: 2 Warm Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Collection 1: Tech Essentials */}
-        <div className="bg-white border border-[#E7E1D7] hover:border-[#205BE8]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover transition-all">
+        <div className="bg-white border border-[#E7E1D7] hover:border-[#205BE8]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover hover:-translate-y-1 transition-all duration-300">
           <div className="space-y-2 mb-4 z-10">
             <span className="text-[11px] font-bold text-[#205BE8] uppercase tracking-wider">
               Workspace & Studio
@@ -62,7 +62,7 @@ export const CollectionsBento: React.FC = () => {
         </div>
 
         {/* Collection 2: Travel Collection */}
-        <div className="bg-white border border-[#E7E1D7] hover:border-[#205BE8]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover transition-all">
+        <div className="bg-white border border-[#E7E1D7] hover:border-[#205BE8]/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover hover:-translate-y-1 transition-all duration-300">
           <div className="space-y-2 mb-4 z-10">
             <span className="text-[11px] font-bold text-[#205BE8] uppercase tracking-wider">
               Transit & Commute

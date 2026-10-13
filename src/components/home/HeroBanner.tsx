@@ -6,6 +6,7 @@ import {
   Headphones,
   BatteryCharging,
   Sparkles,
+  Truck,
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 import { PRODUCTS } from '../../data/products';
@@ -44,81 +45,103 @@ export const HeroBanner: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
         {/* Left Typography & Value Proposition Column */}
         <div className="lg:col-span-5 space-y-6 z-20">
-          {/* Eyebrow Label with Architectural Dash Rule */}
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.22em] text-[#777269]">
-              Sound Beyond Boundaries
+          {/* Brand Label */}
+          <div className="flex items-center gap-2.5">
+            <span className="px-3 py-1 rounded-full bg-white/90 border border-[#E7E1D7] text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] shadow-2xs inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#205BE8] animate-pulse" />
+              <span className="text-[#205BE8]">BOLT 2.0</span>
+              <span className="text-[#E7E1D7]">|</span>
+              <span className="text-[#201F1D]">SOUND & TECH</span>
             </span>
-            <span className="w-10 h-[1.5px] bg-[#777269]/40 inline-block" />
+            <span className="w-8 h-[1.5px] bg-[#777269]/40 inline-block hidden sm:inline-block" />
           </div>
 
-          {/* Primary Reference Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-[3.85rem] font-black text-[#201F1D] tracking-tight leading-[1.06]">
-            Feel Every <br />
-            <span className="text-[#205BE8] relative inline-block">
-              Dimension
-              <span className="absolute -bottom-1 left-0 right-0 h-1 bg-[#205BE8]/20 rounded-full hidden sm:block" />
-            </span>
-          </h1>
+          {/* Main Heading & Supporting Headline */}
+          <div className="space-y-2.5">
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.85rem] font-black text-[#201F1D] tracking-tight leading-[1.05]">
+              Sound That <br />
+              <span className="text-[#205BE8] relative inline-block">
+                Moves You.
+                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-[#205BE8]/20 rounded-full hidden sm:block" />
+              </span>
+            </h1>
+            <p className="text-base sm:text-lg lg:text-xl font-bold text-[#201F1D] tracking-tight">
+              Premium Tech. Built for Everyday Life.
+            </p>
+          </div>
 
-          {/* Supporting Copy */}
+          {/* Description */}
           <p className="text-sm sm:text-base text-[#777269] max-w-md leading-relaxed">
-            Premium acoustics engineered for a truly immersive world. Designed to power your next move, wherever life takes you.
+            Discover immersive audio, smart wearables, and everyday tech essentials designed to keep you connected, comfortable, and ready for anything.
           </p>
 
-          {/* CTA Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3.5 pt-1">
-            {/* Primary Pill Button */}
-            <button
-              onClick={() => handleCategoryNav('headphones')}
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#201F1D] hover:bg-[#205BE8] text-white font-bold text-sm rounded-full shadow-warm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-            >
-              <span>Shop Headphones</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          {/* CTA Action Buttons & Trust Indicators */}
+          <div className="space-y-3.5 pt-1">
+            <div className="flex flex-wrap items-center gap-3.5">
+              {/* Primary CTA */}
+              <button
+                onClick={() => {
+                  setSelectedCategory(null);
+                  setActiveTab('shop');
+                }}
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#201F1D] hover:bg-[#205BE8] text-white font-bold text-sm rounded-full shadow-warm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+              >
+                <span>Explore Products</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
 
-            {/* Secondary Play/3D Experience Button */}
-            <button
-              onClick={handleOpenFlagship}
-              className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-full text-sm font-bold text-[#201F1D] bg-white/70 hover:bg-white border border-[#E7E1D7] transition-all cursor-pointer shadow-xs hover:scale-[1.02]"
-              title="Experience 3D Interactive Inspection"
-            >
-              <div className="w-6 h-6 rounded-full bg-[#205BE8]/10 text-[#205BE8] flex items-center justify-center">
-                <Play className="w-3 h-3 fill-[#205BE8] ml-0.5" />
-              </div>
-              <span>Watch Film</span>
-            </button>
+              {/* Secondary CTA */}
+              <button
+                onClick={() => setActiveTab('about')}
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-bold text-[#201F1D] bg-white/80 hover:bg-white border border-[#E7E1D7] hover:border-[#205BE8]/40 transition-all cursor-pointer shadow-2xs hover:scale-[1.02]"
+                title="Discover BOLT 2.0"
+              >
+                <span>Discover BOLT</span>
+                <ArrowRight className="w-4 h-4 text-[#777269]" />
+              </button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] font-medium text-[#777269] pt-1">
+              <span className="inline-flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#205BE8]" /> 2-Year Official Warranty
+              </span>
+              <span className="w-1 h-1 rounded-full bg-[#777269]/40 hidden sm:inline-block" />
+              <span className="inline-flex items-center gap-1.5">
+                <Truck className="w-3.5 h-3.5 text-[#205BE8]" /> Free Express Delivery on Orders Over $99
+              </span>
+            </div>
           </div>
 
-          {/* Micro Specs Strip (Directly from Reference) */}
+          {/* Product Highlights Strip */}
           <div className="pt-6 border-t border-[#E7E1D7]/80 flex flex-wrap items-center gap-5 sm:gap-7 text-xs text-[#201F1D]">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-white shadow-2xs border border-[#E7E1D7] flex items-center justify-center text-[#205BE8]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-white shadow-2xs border border-[#E7E1D7] flex items-center justify-center text-[#205BE8] shrink-0">
                 <Volume2 className="w-4 h-4" />
               </div>
               <div className="leading-tight">
-                <span className="block font-bold text-[#201F1D]">Hi-Res</span>
-                <span className="text-[11px] text-[#777269]">Audio 96kHz</span>
+                <span className="block font-bold text-[#201F1D]">Hi-Res Audio</span>
+                <span className="text-[11px] text-[#777269]">Experience every detail</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-white shadow-2xs border border-[#E7E1D7] flex items-center justify-center text-[#205BE8]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-white shadow-2xs border border-[#E7E1D7] flex items-center justify-center text-[#205BE8] shrink-0">
                 <Headphones className="w-4 h-4" />
               </div>
               <div className="leading-tight">
-                <span className="block font-bold text-[#201F1D]">Adaptive</span>
-                <span className="text-[11px] text-[#777269]">Noise Cancelling</span>
+                <span className="block font-bold text-[#201F1D]">Adaptive Noise Cancelling</span>
+                <span className="text-[11px] text-[#777269]">Focus on what matters</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-white shadow-2xs border border-[#E7E1D7] flex items-center justify-center text-[#205BE8]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-white shadow-2xs border border-[#E7E1D7] flex items-center justify-center text-[#205BE8] shrink-0">
                 <BatteryCharging className="w-4 h-4" />
               </div>
               <div className="leading-tight">
-                <span className="block font-bold text-[#201F1D]">Up to 50h</span>
-                <span className="text-[11px] text-[#777269]">Playtime</span>
+                <span className="block font-bold text-[#201F1D]">Up to 50 Hours</span>
+                <span className="text-[11px] text-[#777269]">Power through your day</span>
               </div>
             </div>
           </div>

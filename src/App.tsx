@@ -39,40 +39,40 @@ const MainContent: React.FC = () => {
       'Discover thoughtfully selected tech, flagship acoustics, and everyday essentials with interactive 3D inspection at BOLT 2.0.';
 
     if (activeTab === 'product-detail' && selectedProduct) {
-      title = `${selectedProduct.name} by ${selectedProduct.brand} | Bomato`;
+      title = `${selectedProduct.name} by ${selectedProduct.brand} | BOLT 2.0`;
       desc = selectedProduct.description;
     } else if (activeTab === 'shop') {
-      title = 'Shop All Products & Tech Essentials | Bomato';
+      title = 'Shop All Products & Tech Essentials | BOLT 2.0';
       desc = 'Browse our complete catalog of audio gear, smartwatches, carry bags, and mechanical keyboards.';
     } else if (activeTab === 'categories') {
-      title = 'Browse Categories | Bomato';
+      title = 'Browse Categories | BOLT 2.0';
       desc = 'Find backpacks, headphones, watches, wallets, gaming gear, sunglasses, and travel accessories.';
     } else if (activeTab === 'deals') {
-      title = 'Deals & Discounts | Bomato';
+      title = 'Deals & Discounts | BOLT 2.0';
       desc = 'Exclusive limited-time price cuts and flash promotions on premium tech accessories.';
     } else if (activeTab === 'new-arrivals') {
-      title = 'New Arrivals | Bomato';
+      title = 'New Arrivals | BOLT 2.0';
       desc = 'Fresh releases in high-fidelity audio, mechanical keyboards, and travel backpacks.';
     } else if (activeTab === 'wishlist') {
-      title = 'My Wishlist | Bomato';
+      title = 'My Wishlist | BOLT 2.0';
       desc = 'Your saved tech gear and everyday accessories.';
     } else if (activeTab === 'checkout') {
-      title = 'Secure Checkout | Bomato';
+      title = 'Secure Checkout | BOLT 2.0';
       desc = 'Complete your purchase with encrypted checkout and fast shipping.';
     } else if (activeTab === 'order-confirmation') {
-      title = 'Order Confirmed | Bomato';
+      title = 'Order Confirmed | BOLT 2.0';
       desc = 'Your order details and real-time shipping tracking progress.';
     } else if (activeTab === 'orders') {
-      title = 'My Orders & Tracking | Bomato';
+      title = 'My Orders & Tracking | BOLT 2.0';
       desc = 'Review past orders, invoices, and shipment tracking numbers.';
     } else if (activeTab === 'privacy') {
-      title = 'Privacy Policy | Bomato';
-      desc = 'How Bomato collects and protects your customer data.';
+      title = 'Privacy Policy | BOLT 2.0';
+      desc = 'How BOLT 2.0 collects and protects your customer data.';
     } else if (activeTab === 'terms') {
-      title = 'Terms & Conditions | Bomato';
+      title = 'Terms & Conditions | BOLT 2.0';
       desc = 'Customer terms of service and 30-day return policies.';
     } else if (activeTab === 'about') {
-      title = 'About Bomato | Everyday Tech Gear';
+      title = 'About BOLT 2.0 | Everyday Tech Gear';
       desc = 'Our mission to build durable, elegant accessories designed for work, travel, and play.';
     }
 

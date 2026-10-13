@@ -267,7 +267,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setActiveTabState(tab);
     window.location.hash = tab === 'home' ? '' : tab;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    analytics.trackPageView(`/${tab}`, `Bomato - ${tab.toUpperCase()}`);
+    analytics.trackPageView(`/${tab}`, `BOLT 2.0 - ${tab.toUpperCase()}`);
   };
 
   const setSelectedProduct = (product: Product | null) => {
@@ -353,12 +353,12 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const applyPromoCode = (code: string): boolean => {
     const cleaned = code.trim().toUpperCase();
-    if (cleaned === 'SAVE10' || cleaned === 'BOMATO10') {
+    if (cleaned === 'SAVE10' || cleaned === 'BOMATO10' || cleaned === 'BOLT10') {
       setPromoCode(cleaned);
       setDiscountPercent(10);
       return true;
     }
-    if (cleaned === 'WELCOME20') {
+    if (cleaned === 'WELCOME20' || cleaned === 'BOLT20') {
       setPromoCode(cleaned);
       setDiscountPercent(20);
       return true;

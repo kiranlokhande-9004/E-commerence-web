@@ -53,8 +53,8 @@ export const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="text-amber-400 font-bold">⚡</span>
-            <span className="hidden sm:inline font-medium">Summer Tech Fest is Live! Save up to 50% across accessories</span>
-            <span className="sm:hidden font-medium">Summer Fest: Up to 50% OFF</span>
+            <span className="hidden sm:inline font-medium">BOLT 2.0 Tech Fest is Live! Save up to 50% across high-fidelity acoustics & essentials</span>
+            <span className="sm:hidden font-medium">BOLT 2.0: Up to 50% OFF</span>
             <button
               onClick={() => handleNavClick('deals')}
               className="text-[#60A5FA] hover:text-[#93C5FD] font-semibold underline underline-offset-2 ml-1 inline-flex items-center gap-1 cursor-pointer transition-colors"
@@ -63,7 +63,7 @@ export const Header: React.FC = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center gap-2 text-[#F7F5F0]/75 shrink-0 text-[11px]">
-            <span>Free Shipping on orders over $99</span>
+            <span>Free Express Shipping on orders over $99</span>
           </div>
         </div>
       </div>
@@ -186,7 +186,7 @@ export const Header: React.FC = () => {
             >
               <Heart className={`w-5 h-5 ${activeTab === 'wishlist' ? 'fill-[#205BE8]' : ''}`} />
               {wishlist.length > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-rose-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-rose-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white">
                   {wishlist.length}
                 </span>
               )}
@@ -200,7 +200,7 @@ export const Header: React.FC = () => {
             >
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#205BE8] text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white">
+                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#205BE8] text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white">
                   {cartCount}
                 </span>
               )}
