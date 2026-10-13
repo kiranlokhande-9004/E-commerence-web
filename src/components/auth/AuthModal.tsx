@@ -54,11 +54,11 @@ export const AuthModal: React.FC = () => {
       />
 
       <div className="min-h-full flex items-center justify-center p-4">
-        <div className="relative bg-[#FFFFFF] dark:bg-[#1C1916] rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-[#E7E1D7] dark:border-[#332E28] animate-in fade-in zoom-in-95 transition-colors">
+        <div className="relative bg-[#FFFFFF] rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-[#E7E1D7] animate-in fade-in zoom-in-95 transition-colors">
           {/* Close button */}
           <button
             onClick={() => setIsAuthModalOpen(false)}
-            className="absolute top-5 right-5 p-2 rounded-xl text-[#777269] dark:text-[#A59D91] hover:text-[#201F1D] dark:hover:text-[#F3EFE8] hover:bg-[#F0EDE6] dark:hover:bg-[#221F1B] transition-colors cursor-pointer"
+            className="absolute top-5 right-5 p-2 rounded-xl text-[#777269] hover:text-[#201F1D] hover:bg-[#F0EDE6] transition-colors cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -66,13 +66,13 @@ export const AuthModal: React.FC = () => {
 
           {/* Heading */}
           <div className="text-center mb-6">
-            <div className="w-12 h-12 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] dark:text-[#3B82F6] mx-auto flex items-center justify-center mb-3 border border-[#E7E1D7] dark:border-[#332E28]">
+            <div className="w-12 h-12 rounded-2xl bg-[#F0EDE6] text-[#205BE8] mx-auto flex items-center justify-center mb-3 border border-[#E7E1D7]">
               <User className="w-6 h-6" />
             </div>
-            <h2 className="text-2xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
+            <h2 className="text-2xl font-extrabold text-[#201F1D] tracking-tight">
               {mode === 'login' ? 'Customer Sign In' : 'Create Customer Account'}
             </h2>
-            <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-1">
+            <p className="text-xs text-[#777269] mt-1">
               {mode === 'login'
                 ? 'Welcome back to Bomato. Access saved carts & orders.'
                 : 'Join Bomato for priority shipping and members-only deals.'}
@@ -80,7 +80,7 @@ export const AuthModal: React.FC = () => {
           </div>
 
           {/* Segmented Tabs with Soft Depth */}
-          <div className="grid grid-cols-2 p-1 bg-[#F0EDE6] dark:bg-[#221F1B] rounded-xl mb-6 border border-[#E7E1D7] dark:border-[#332E28]">
+          <div className="grid grid-cols-2 p-1 bg-[#F0EDE6] rounded-xl mb-6 border border-[#E7E1D7]">
             <button
               onClick={() => {
                 setMode('login');
@@ -88,8 +88,8 @@ export const AuthModal: React.FC = () => {
               }}
               className={`py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                 mode === 'login'
-                  ? 'bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8] shadow-xs'
-                  : 'text-[#777269] dark:text-[#A59D91] hover:text-[#201F1D] dark:hover:text-[#F3EFE8]'
+                  ? 'bg-[#FFFFFF] text-[#201F1D] shadow-xs'
+                  : 'text-[#777269] hover:text-[#201F1D]'
               }`}
             >
               Sign In
@@ -101,8 +101,8 @@ export const AuthModal: React.FC = () => {
               }}
               className={`py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                 mode === 'register'
-                  ? 'bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8] shadow-xs'
-                  : 'text-[#777269] dark:text-[#A59D91] hover:text-[#201F1D] dark:hover:text-[#F3EFE8]'
+                  ? 'bg-[#FFFFFF] text-[#201F1D] shadow-xs'
+                  : 'text-[#777269] hover:text-[#201F1D]'
               }`}
             >
               Create Account
@@ -122,17 +122,17 @@ export const AuthModal: React.FC = () => {
 
             {mode === 'register' && (
               <div>
-                <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                   Full Name
                 </label>
                 <div className="relative">
-                  <User className="w-4 h-4 text-[#777269] dark:text-[#A59D91] absolute left-3 top-3 pointer-events-none" />
+                  <User className="w-4 h-4 text-[#777269] absolute left-3 top-3 pointer-events-none" />
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                     placeholder="Kiran Lokhande"
-                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
+                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] border border-[#E7E1D7] rounded-xl text-[#201F1D] placeholder-[#777269] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
                   />
                 </div>
                 {errors.name && <p className="text-xs text-red-500 mt-1 font-medium">{errors.name}</p>}
@@ -140,34 +140,34 @@ export const AuthModal: React.FC = () => {
             )}
 
             <div>
-              <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+              <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#777269] dark:text-[#A59D91] absolute left-3 top-3 pointer-events-none" />
+                <Mail className="w-4 h-4 text-[#777269] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                   placeholder="name@example.com"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] border border-[#E7E1D7] rounded-xl text-[#201F1D] placeholder-[#777269] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
                 />
               </div>
               {errors.email && <p className="text-xs text-red-500 mt-1 font-medium">{errors.email}</p>}
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+              <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                 Password
               </label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-[#777269] dark:text-[#A59D91] absolute left-3 top-3 pointer-events-none" />
+                <Lock className="w-4 h-4 text-[#777269] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="password"
                   value={formData.password}
                   onChange={(e) => setFormData((p) => ({ ...p, password: e.target.value }))}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] border border-[#E7E1D7] rounded-xl text-[#201F1D] placeholder-[#777269] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
                 />
               </div>
               {errors.password && (

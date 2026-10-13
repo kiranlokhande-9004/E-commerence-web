@@ -139,8 +139,8 @@ export const CheckoutView: React.FC = () => {
   if (cart.length === 0) {
     return (
       <div className="max-w-2xl mx-auto py-16 px-4 text-center">
-        <h2 className="text-2xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8]">Your Cart is Empty</h2>
-        <p className="text-sm text-[#777269] dark:text-[#A59D91] mt-2 mb-6">
+        <h2 className="text-2xl font-extrabold text-[#201F1D]">Your Cart is Empty</h2>
+        <p className="text-sm text-[#777269] mt-2 mb-6">
           Add items to your cart before proceeding to checkout.
         </p>
         <button
@@ -158,7 +158,7 @@ export const CheckoutView: React.FC = () => {
       {/* Return to shop */}
       <button
         onClick={() => setActiveTab('shop')}
-        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] dark:hover:text-[#3B82F6] mb-6 cursor-pointer"
+        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] hover:text-[#205BE8] mb-6 cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Shop</span>
@@ -168,10 +168,10 @@ export const CheckoutView: React.FC = () => {
         {/* Left Form: Shipping + Payment */}
         <div className="lg:col-span-7 space-y-6">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] tracking-tight">
               Express Checkout
             </h1>
-            <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-1">
+            <p className="text-xs sm:text-sm text-[#777269] mt-1">
               Please enter your shipping destination and payment information.
             </p>
           </div>
@@ -190,18 +190,18 @@ export const CheckoutView: React.FC = () => {
             </div>
 
             {/* Shipping Details Card */}
-            <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-2xl p-6 shadow-warm space-y-4">
-              <div className="flex items-center justify-between border-b border-[#E7E1D7] dark:border-[#332E28] pb-3">
-                <h2 className="text-lg font-bold text-[#201F1D] dark:text-[#F3EFE8] flex items-center gap-2">
+            <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-2xl p-6 shadow-warm space-y-4">
+              <div className="flex items-center justify-between border-b border-[#E7E1D7] pb-3">
+                <h2 className="text-lg font-bold text-[#201F1D] flex items-center gap-2">
                   <Truck className="w-5 h-5 text-[#205BE8]" />
                   <span>1. Shipping Details</span>
                 </h2>
-                <span className="text-xs text-[#777269] dark:text-[#A59D91] font-medium">* Required</span>
+                <span className="text-xs text-[#777269] font-medium">* Required</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                  <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                     Full Name *
                   </label>
                   <input
@@ -210,10 +210,10 @@ export const CheckoutView: React.FC = () => {
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder="e.g. Kiran Lokhande"
-                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] border rounded-xl text-[#201F1D] placeholder-[#777269] focus:outline-hidden transition-colors ${
                       errors.fullName
                         ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                        : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
+                        : 'border-[#E7E1D7] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                     }`}
                   />
                   {errors.fullName && (
@@ -222,7 +222,7 @@ export const CheckoutView: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                  <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                     Email Address *
                   </label>
                   <input
@@ -231,10 +231,10 @@ export const CheckoutView: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="you@domain.com"
-                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] border rounded-xl text-[#201F1D] placeholder-[#777269] focus:outline-hidden transition-colors ${
                       errors.email
                         ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                        : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
+                        : 'border-[#E7E1D7] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                     }`}
                   />
                   {errors.email && (
@@ -243,7 +243,7 @@ export const CheckoutView: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                  <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                     Phone Number *
                   </label>
                   <input
@@ -252,10 +252,10 @@ export const CheckoutView: React.FC = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+1 (555) 019-2834"
-                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] border rounded-xl text-[#201F1D] placeholder-[#777269] focus:outline-hidden transition-colors ${
                       errors.phone
                         ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                        : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
+                        : 'border-[#E7E1D7] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                     }`}
                   />
                   {errors.phone && (
@@ -264,7 +264,7 @@ export const CheckoutView: React.FC = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                  <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                     Street Address *
                   </label>
                   <input
@@ -273,10 +273,10 @@ export const CheckoutView: React.FC = () => {
                     value={formData.addressLine1}
                     onChange={handleChange}
                     placeholder="123 Innovation Blvd, Apt 4B"
-                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] border rounded-xl text-[#201F1D] placeholder-[#777269] focus:outline-hidden transition-colors ${
                       errors.addressLine1
                         ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                        : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
+                        : 'border-[#E7E1D7] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                     }`}
                   />
                   {errors.addressLine1 && (
@@ -285,7 +285,7 @@ export const CheckoutView: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                  <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                     City *
                   </label>
                   <input
@@ -294,10 +294,10 @@ export const CheckoutView: React.FC = () => {
                     value={formData.city}
                     onChange={handleChange}
                     placeholder="San Francisco"
-                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] border rounded-xl text-[#201F1D] placeholder-[#777269] focus:outline-hidden transition-colors ${
                       errors.city
                         ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                        : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
+                        : 'border-[#E7E1D7] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                     }`}
                   />
                   {errors.city && (
@@ -307,7 +307,7 @@ export const CheckoutView: React.FC = () => {
 
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                    <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                       State *
                     </label>
                     <input
@@ -316,10 +316,10 @@ export const CheckoutView: React.FC = () => {
                       value={formData.state}
                       onChange={handleChange}
                       placeholder="CA"
-                      className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
+                      className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] border rounded-xl text-[#201F1D] placeholder-[#777269] focus:outline-hidden transition-colors ${
                         errors.state
                           ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                          : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
+                          : 'border-[#E7E1D7] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                       }`}
                     />
                     {errors.state && (
@@ -327,7 +327,7 @@ export const CheckoutView: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
+                    <label className="block text-xs font-bold text-[#201F1D] uppercase mb-1">
                       ZIP *
                     </label>
                     <input
@@ -336,10 +336,10 @@ export const CheckoutView: React.FC = () => {
                       value={formData.postalCode}
                       onChange={handleChange}
                       placeholder="94107"
-                      className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
+                      className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] border rounded-xl text-[#201F1D] placeholder-[#777269] focus:outline-hidden transition-colors ${
                         errors.postalCode
                           ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                          : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
+                          : 'border-[#E7E1D7] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                       }`}
                     />
                     {errors.postalCode && (
@@ -351,13 +351,13 @@ export const CheckoutView: React.FC = () => {
             </div>
 
             {/* Payment Method Card */}
-            <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-2xl p-6 shadow-warm space-y-4">
-              <div className="flex items-center justify-between border-b border-[#E7E1D7] dark:border-[#332E28] pb-3">
-                <h2 className="text-lg font-bold text-[#201F1D] dark:text-[#F3EFE8] flex items-center gap-2">
+            <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-2xl p-6 shadow-warm space-y-4">
+              <div className="flex items-center justify-between border-b border-[#E7E1D7] pb-3">
+                <h2 className="text-lg font-bold text-[#201F1D] flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-[#205BE8]" />
                   <span>2. Payment Method</span>
                 </h2>
-                <div className="flex items-center gap-1 text-xs text-[#777269] dark:text-[#A59D91]">
+                <div className="flex items-center gap-1 text-xs text-[#777269]">
                   <Lock className="w-3.5 h-3.5 text-emerald-600" />
                   <span>256-bit SSL</span>
                 </div>
@@ -371,7 +371,7 @@ export const CheckoutView: React.FC = () => {
                   className={`p-3 rounded-xl border text-xs font-bold transition-all text-center cursor-pointer ${
                     paymentMethod === 'card'
                       ? 'border-[#205BE8] bg-[#205BE8]/10 text-[#205BE8] shadow-xs'
-                      : 'neu-button border-[#E7E1D7] dark:border-[#332E28] bg-[#FFFFFF] dark:bg-[#221F1B] text-[#201F1D] dark:text-[#F3EFE8] hover:border-[#205BE8]'
+                      : 'neu-button border-[#E7E1D7] bg-[#FFFFFF] text-[#201F1D] hover:border-[#205BE8]'
                   }`}
                 >
                   Credit Card
@@ -382,7 +382,7 @@ export const CheckoutView: React.FC = () => {
                   className={`p-3 rounded-xl border text-xs font-bold transition-all text-center cursor-pointer ${
                     paymentMethod === 'apple_pay'
                       ? 'border-[#205BE8] bg-[#205BE8]/10 text-[#205BE8] shadow-xs'
-                      : 'neu-button border-[#E7E1D7] dark:border-[#332E28] bg-[#FFFFFF] dark:bg-[#221F1B] text-[#201F1D] dark:text-[#F3EFE8] hover:border-[#205BE8]'
+                      : 'neu-button border-[#E7E1D7] bg-[#FFFFFF] text-[#201F1D] hover:border-[#205BE8]'
                   }`}
                 >
                   Apple Pay / GPay
@@ -393,7 +393,7 @@ export const CheckoutView: React.FC = () => {
                   className={`p-3 rounded-xl border text-xs font-bold transition-all text-center cursor-pointer ${
                     paymentMethod === 'cod'
                       ? 'border-[#205BE8] bg-[#205BE8]/10 text-[#205BE8] shadow-xs'
-                      : 'neu-button border-[#E7E1D7] dark:border-[#332E28] bg-[#FFFFFF] dark:bg-[#221F1B] text-[#201F1D] dark:text-[#F3EFE8] hover:border-[#205BE8]'
+                      : 'neu-button border-[#E7E1D7] bg-[#FFFFFF] text-[#201F1D] hover:border-[#205BE8]'
                   }`}
                 >
                   Cash on Delivery
@@ -402,9 +402,9 @@ export const CheckoutView: React.FC = () => {
 
               {/* Card Inputs */}
               {paymentMethod === 'card' && (
-                <div className="p-4 bg-[#F0EDE6]/50 dark:bg-[#221F1B]/70 rounded-xl space-y-3 border border-[#E7E1D7] dark:border-[#332E28]">
+                <div className="p-4 bg-[#F0EDE6]/50 rounded-xl space-y-3 border border-[#E7E1D7]">
                   <div>
-                    <label className="block text-[11px] font-bold text-[#777269] dark:text-[#A59D91] uppercase mb-1">
+                    <label className="block text-[11px] font-bold text-[#777269] uppercase mb-1">
                       Card Number
                     </label>
                     <input
@@ -414,12 +414,12 @@ export const CheckoutView: React.FC = () => {
                         setCardDetails((prev) => ({ ...prev, cardNumber: e.target.value }))
                       }
                       placeholder="4242 4242 4242 4242"
-                      className="w-full px-3 py-2 text-sm bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-lg font-mono text-[#201F1D] dark:text-[#F3EFE8] focus:border-[#205BE8] focus:ring-1 focus:ring-[#205BE8]/20 focus:outline-hidden"
+                      className="w-full px-3 py-2 text-sm bg-[#FFFFFF] border border-[#E7E1D7] rounded-lg font-mono text-[#201F1D] focus:border-[#205BE8] focus:ring-1 focus:ring-[#205BE8]/20 focus:outline-hidden"
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-[11px] font-bold text-[#777269] dark:text-[#A59D91] uppercase mb-1">
+                      <label className="block text-[11px] font-bold text-[#777269] uppercase mb-1">
                         Expiry Date
                       </label>
                       <input
@@ -429,11 +429,11 @@ export const CheckoutView: React.FC = () => {
                           setCardDetails((prev) => ({ ...prev, expiry: e.target.value }))
                         }
                         placeholder="MM/YY"
-                        className="w-full px-3 py-2 text-sm bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-lg font-mono text-[#201F1D] dark:text-[#F3EFE8] focus:border-[#205BE8] focus:ring-1 focus:ring-[#205BE8]/20 focus:outline-hidden"
+                        className="w-full px-3 py-2 text-sm bg-[#FFFFFF] border border-[#E7E1D7] rounded-lg font-mono text-[#201F1D] focus:border-[#205BE8] focus:ring-1 focus:ring-[#205BE8]/20 focus:outline-hidden"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-[#777269] dark:text-[#A59D91] uppercase mb-1">
+                      <label className="block text-[11px] font-bold text-[#777269] uppercase mb-1">
                         Security CVC
                       </label>
                       <input
@@ -444,7 +444,7 @@ export const CheckoutView: React.FC = () => {
                         }
                         placeholder="123"
                         maxLength={4}
-                        className="w-full px-3 py-2 text-sm bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-lg font-mono text-[#201F1D] dark:text-[#F3EFE8] focus:border-[#205BE8] focus:ring-1 focus:ring-[#205BE8]/20 focus:outline-hidden"
+                        className="w-full px-3 py-2 text-sm bg-[#FFFFFF] border border-[#E7E1D7] rounded-lg font-mono text-[#201F1D] focus:border-[#205BE8] focus:ring-1 focus:ring-[#205BE8]/20 focus:outline-hidden"
                       />
                     </div>
                   </div>
@@ -452,20 +452,20 @@ export const CheckoutView: React.FC = () => {
               )}
 
               {paymentMethod === 'apple_pay' && (
-                <div className="p-4 bg-[#F0EDE6]/50 dark:bg-[#221F1B]/70 rounded-xl text-center text-xs text-[#777269] dark:text-[#A59D91] border border-[#E7E1D7] dark:border-[#332E28]">
+                <div className="p-4 bg-[#F0EDE6]/50 rounded-xl text-center text-xs text-[#777269] border border-[#E7E1D7]">
                   Biometric one-touch authorization will launch when you place order.
                 </div>
               )}
 
               {paymentMethod === 'cod' && (
-                <div className="p-4 bg-[#F0EDE6]/50 dark:bg-[#221F1B]/70 rounded-xl text-xs text-[#777269] dark:text-[#A59D91] space-y-1 border border-[#E7E1D7] dark:border-[#332E28]">
-                  <p className="font-semibold text-[#201F1D] dark:text-[#F3EFE8]">Cash on Delivery selected.</p>
+                <div className="p-4 bg-[#F0EDE6]/50 rounded-xl text-xs text-[#777269] space-y-1 border border-[#E7E1D7]">
+                  <p className="font-semibold text-[#201F1D]">Cash on Delivery selected.</p>
                   <p>You can pay via card or cash directly to the courier when your package arrives.</p>
                 </div>
               )}
 
               {paymentError && (
-                <div className="p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-xl text-xs text-red-600 dark:text-red-400 font-medium">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-600 font-medium">
                   {paymentError}
                 </div>
               )}
@@ -476,7 +476,7 @@ export const CheckoutView: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || cooldownRemaining > 0}
-                className="w-full py-4 px-6 bg-[#205BE8] hover:bg-[#174AC4] disabled:bg-[#F0EDE6] dark:disabled:bg-[#221F1B] disabled:text-[#777269] dark:disabled:text-[#A59D91] text-white font-bold rounded-xl text-base shadow-warm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                className="w-full py-4 px-6 bg-[#205BE8] hover:bg-[#174AC4] disabled:bg-[#F0EDE6] disabled:text-[#777269] text-white font-bold rounded-xl text-base shadow-warm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <span>Securing & Processing Order...</span>
@@ -495,8 +495,8 @@ export const CheckoutView: React.FC = () => {
 
         {/* Right Summary */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-2xl p-6 shadow-warm space-y-4 sticky top-24">
-            <h3 className="text-base font-bold text-[#201F1D] dark:text-[#F3EFE8] border-b border-[#E7E1D7] dark:border-[#332E28] pb-3">
+          <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-2xl p-6 shadow-warm space-y-4 sticky top-24">
+            <h3 className="text-base font-bold text-[#201F1D] border-b border-[#E7E1D7] pb-3">
               Order Summary ({cart.length} {cart.length === 1 ? 'item' : 'items'})
             </h3>
 
@@ -505,12 +505,12 @@ export const CheckoutView: React.FC = () => {
               {cart.map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between gap-3 text-xs">
                   <div className="flex items-center gap-2.5 truncate">
-                    <span className="w-5 h-5 bg-[#F0EDE6] dark:bg-[#221F1B] rounded text-[#201F1D] dark:text-[#F3EFE8] font-bold flex items-center justify-center shrink-0 border border-[#E7E1D7] dark:border-[#332E28]">
+                    <span className="w-5 h-5 bg-[#F0EDE6] rounded text-[#201F1D] font-bold flex items-center justify-center shrink-0 border border-[#E7E1D7]">
                       {item.quantity}×
                     </span>
-                    <span className="font-semibold text-[#201F1D] dark:text-[#F3EFE8] truncate">{item.product.name}</span>
+                    <span className="font-semibold text-[#201F1D] truncate">{item.product.name}</span>
                   </div>
-                  <span className="font-mono tabular-nums text-[#201F1D] dark:text-[#F3EFE8] font-bold shrink-0">
+                  <span className="font-mono tabular-nums text-[#201F1D] font-bold shrink-0">
                     ${(item.product.price * item.quantity).toFixed(2)}
                   </span>
                 </div>
@@ -518,37 +518,37 @@ export const CheckoutView: React.FC = () => {
             </div>
 
             {/* Calculations */}
-            <div className="border-t border-[#E7E1D7] dark:border-[#332E28] pt-3 space-y-2 text-xs">
-              <div className="flex justify-between text-[#777269] dark:text-[#A59D91]">
+            <div className="border-t border-[#E7E1D7] pt-3 space-y-2 text-xs">
+              <div className="flex justify-between text-[#777269]">
                 <span>Subtotal</span>
                 <span className="font-mono tabular-nums">${subtotal.toFixed(2)}</span>
               </div>
               {discount > 0 && (
-                <div className="flex justify-between text-emerald-600 dark:text-emerald-400 font-semibold">
+                <div className="flex justify-between text-emerald-600 font-semibold">
                   <span>Promo Discount</span>
                   <span className="font-mono tabular-nums">-${discount.toFixed(2)}</span>
                 </div>
               )}
-              <div className="flex justify-between text-[#777269] dark:text-[#A59D91]">
+              <div className="flex justify-between text-[#777269]">
                 <span>Estimated Shipping</span>
                 <span className="font-mono tabular-nums">
                   {shippingFee === 0 ? 'FREE' : `$${shippingFee.toFixed(2)}`}
                 </span>
               </div>
-              <div className="flex justify-between text-[#777269] dark:text-[#A59D91]">
+              <div className="flex justify-between text-[#777269]">
                 <span>Estimated Sales Tax (8%)</span>
                 <span className="font-mono tabular-nums">${(subtotal * 0.08).toFixed(2)}</span>
               </div>
-              <div className="border-t border-[#E7E1D7] dark:border-[#332E28] pt-3 flex justify-between text-lg font-extrabold text-[#201F1D] dark:text-[#F3EFE8]">
+              <div className="border-t border-[#E7E1D7] pt-3 flex justify-between text-lg font-extrabold text-[#201F1D]">
                 <span>Total Due</span>
-                <span className="font-mono tabular-nums text-[#205BE8] dark:text-[#60A5FA]">
+                <span className="font-mono tabular-nums text-[#205BE8]">
                   ${(total + subtotal * 0.08).toFixed(2)}
                 </span>
               </div>
             </div>
 
-            <div className="bg-[#F0EDE6]/60 dark:bg-[#221F1B]/70 border border-[#E7E1D7] dark:border-[#332E28] rounded-xl p-3 text-[11px] text-[#777269] dark:text-[#A59D91] space-y-1">
-              <p className="flex items-center gap-1.5 font-semibold text-[#201F1D] dark:text-[#F3EFE8]">
+            <div className="bg-[#F0EDE6]/60 border border-[#E7E1D7] rounded-xl p-3 text-[11px] text-[#777269] space-y-1">
+              <p className="flex items-center gap-1.5 font-semibold text-[#201F1D]">
                 <ShieldCheck className="w-4 h-4 text-[#205BE8]" />
                 <span>Bomato Buyer Protection Guarantee</span>
               </p>

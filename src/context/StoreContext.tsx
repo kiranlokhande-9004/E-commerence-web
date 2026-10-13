@@ -48,10 +48,6 @@ interface StoreContextType {
   lastOrder: Order | null;
   createOrder: (shippingAddress: ShippingAddress, paymentMethod: string) => Order;
 
-  // Theme (Dark / Light)
-  theme: 'light' | 'dark';
-  toggleTheme: () => void;
-
   // Cat 3D feature
   isCatHidden: boolean;
   setIsCatHidden: (hidden: boolean) => void;
@@ -71,59 +67,15 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
 
-  // Theme state
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    try {
-      const savedTheme = localStorage.getItem('bomato_theme');
-      if (savedTheme === 'light' || savedTheme === 'dark') {
-        return savedTheme;
-      }
-      if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-    } catch {
-      // fallback
-    }
-    return 'light';
-  });
-
-  // Apply theme class to documentElement
+  // Enforce Light Theme Only per design requirement
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.remove('dark');
-      root.classList.add('light');
-    }
+    root.classList.remove('dark');
+    root.classList.add('light');
     try {
-      localStorage.setItem('bomato_theme', theme);
-    } catch {
-      // guarded
-    }
-  }, [theme]);
-
-  // Listen to system changes if user hasn't explicitly set a preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleSystemChange = (e: MediaQueryListEvent) => {
-      try {
-        const saved = localStorage.getItem('bomato_theme');
-        if (!saved) {
-          setTheme(e.matches ? 'dark' : 'light');
-        }
-      } catch {
-        // guarded
-      }
-    };
-    mediaQuery.addEventListener('change', handleSystemChange);
-    return () => mediaQuery.removeEventListener('change', handleSystemChange);
+      localStorage.removeItem('bomato_theme');
+    } catch {}
   }, []);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
 
   // Cart
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -505,8 +457,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         orders,
         lastOrder,
         createOrder,
-        theme,
-        toggleTheme,
         isCatHidden,
         setIsCatHidden,
         cookieConsent,

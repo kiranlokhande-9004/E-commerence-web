@@ -44,30 +44,30 @@ export const ShopView: React.FC = () => {
       {/* Title & Filter Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] tracking-tight">
             {selectedCategory
               ? `${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} Collection`
               : 'All Products'}
           </h1>
-          <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-1">
+          <p className="text-xs sm:text-sm text-[#777269] mt-1">
             Showing {filteredProducts.length} of {PRODUCTS.length} curated essentials
           </p>
         </div>
 
         {/* Sort Controls with Soft Raised Container */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl px-3.5 py-2 shadow-xs text-xs">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#777269] dark:text-[#A59D91]" />
-            <span className="font-bold text-[#201F1D] dark:text-[#F3EFE8]">Sort:</span>
+          <div className="flex items-center gap-2 bg-[#FFFFFF] border border-[#E7E1D7] rounded-xl px-3.5 py-2 shadow-xs text-xs">
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#777269]" />
+            <span className="font-bold text-[#201F1D]">Sort:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-transparent font-medium text-[#201F1D] dark:text-[#F3EFE8] focus:outline-hidden cursor-pointer"
+              className="bg-transparent font-medium text-[#201F1D] focus:outline-hidden cursor-pointer"
             >
-              <option value="featured" className="bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8]">Featured</option>
-              <option value="price-asc" className="bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8]">Price: Low to High</option>
-              <option value="price-desc" className="bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8]">Price: High to Low</option>
-              <option value="rating" className="bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8]">Highest Rated</option>
+              <option value="featured" className="bg-[#FFFFFF] text-[#201F1D]">Featured</option>
+              <option value="price-asc" className="bg-[#FFFFFF] text-[#201F1D]">Price: Low to High</option>
+              <option value="price-desc" className="bg-[#FFFFFF] text-[#201F1D]">Price: High to Low</option>
+              <option value="rating" className="bg-[#FFFFFF] text-[#201F1D]">Highest Rated</option>
             </select>
           </div>
         </div>
@@ -80,7 +80,7 @@ export const ShopView: React.FC = () => {
           className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
             selectedCategory === null
               ? 'bg-[#205BE8] text-white shadow-warm'
-              : 'neu-button bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] text-[#201F1D] dark:text-[#F3EFE8] hover:border-[#205BE8]'
+              : 'neu-button bg-[#FFFFFF] border border-[#E7E1D7] text-[#201F1D] hover:border-[#205BE8]'
           }`}
         >
           All Items
@@ -94,7 +94,7 @@ export const ShopView: React.FC = () => {
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 isSelected
                   ? 'bg-[#205BE8] text-white shadow-warm'
-                  : 'neu-button bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] text-[#201F1D] dark:text-[#F3EFE8] hover:border-[#205BE8]'
+                  : 'neu-button bg-[#FFFFFF] border border-[#E7E1D7] text-[#201F1D] hover:border-[#205BE8]'
               }`}
             >
               {cat.name}
@@ -103,7 +103,7 @@ export const ShopView: React.FC = () => {
         })}
 
         {searchQuery && (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#205BE8]/10 dark:bg-[#205BE8]/20 border border-[#205BE8]/30 rounded-xl text-xs text-[#205BE8] dark:text-[#60A5FA]">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#205BE8]/10 border border-[#205BE8]/30 rounded-xl text-xs text-[#205BE8]">
             <span>Query: "{searchQuery}"</span>
             <button
               onClick={() => setSearchQuery('')}
@@ -118,12 +118,12 @@ export const ShopView: React.FC = () => {
 
       {/* Product Grid */}
       {filteredProducts.length === 0 ? (
-        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-12 text-center max-w-md mx-auto shadow-warm">
-          <div className="w-14 h-14 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#777269] dark:text-[#A59D91] mx-auto flex items-center justify-center mb-3">
+        <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-3xl p-12 text-center max-w-md mx-auto shadow-warm">
+          <div className="w-14 h-14 rounded-2xl bg-[#F0EDE6] text-[#777269] mx-auto flex items-center justify-center mb-3">
             <Search className="w-7 h-7" />
           </div>
-          <h3 className="text-base font-bold text-[#201F1D] dark:text-[#F3EFE8]">No matching items found</h3>
-          <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-1 mb-4">
+          <h3 className="text-base font-bold text-[#201F1D]">No matching items found</h3>
+          <p className="text-xs text-[#777269] mt-1 mb-4">
             Try adjusting your search criteria or resetting filters to browse all accessories.
           </p>
           <button

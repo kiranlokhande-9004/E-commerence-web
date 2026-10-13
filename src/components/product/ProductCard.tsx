@@ -28,7 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="group bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] hover:border-[#205BE8] dark:hover:border-[#205BE8] rounded-2xl p-4 flex flex-col justify-between shadow-warm hover:shadow-warm-hover cursor-pointer relative transition-all duration-200"
+      className="group bg-[#FFFFFF] border border-[#E7E1D7] hover:border-[#205BE8] rounded-2xl p-4 flex flex-col justify-between shadow-warm hover:shadow-warm-hover cursor-pointer relative transition-all duration-200"
       role="article"
       aria-label={`${product.brand} ${product.name}`}
     >
@@ -47,7 +47,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </span>
           )}
           {product.modelUrl && (
-            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#F0EDE6] dark:bg-[#221F1B] text-[#201F1D] dark:text-[#F3EFE8] border border-[#E7E1D7] dark:border-[#332E28] inline-flex items-center gap-1 shadow-2xs">
+            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#F0EDE6] text-[#201F1D] border border-[#E7E1D7] inline-flex items-center gap-1 shadow-2xs">
               <Box className="w-3 h-3 text-[#205BE8]" /> 3D
             </span>
           )}
@@ -61,8 +61,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           }}
           className={`p-2 rounded-xl border transition-all cursor-pointer ${
             isFavorite
-              ? 'text-red-500 bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-900 shadow-2xs'
-              : 'border-[#E7E1D7] dark:border-[#332E28] bg-[#F0EDE6] dark:bg-[#221F1B] text-[#777269] dark:text-[#A59D91] hover:text-red-500 hover:border-red-300 shadow-2xs'
+              ? 'text-red-500 bg-red-50 border-red-200 shadow-2xs'
+              : 'border-[#E7E1D7] bg-[#F0EDE6] text-[#777269] hover:text-red-500 hover:border-red-300 shadow-2xs'
           }`}
           aria-label={isFavorite ? 'Remove from wishlist' : 'Add to wishlist'}
         >
@@ -71,7 +71,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       {/* Product Image Slot */}
-      <div className="my-2 flex items-center justify-center min-h-[170px] bg-[#F0EDE6]/60 dark:bg-[#221F1B]/70 rounded-xl p-2 overflow-hidden border border-[#E7E1D7]/50 dark:border-[#332E28]/50">
+      <div className="my-2 flex items-center justify-center min-h-[170px] bg-[#F0EDE6]/60 rounded-xl p-2 overflow-hidden border border-[#E7E1D7]/50">
         <AssetSlot
           src={product.images?.[0] || product.image || ''}
           alt={product.name}
@@ -83,11 +83,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {/* Meta info */}
       <div className="mt-3 space-y-1">
-        <p className="text-xs font-medium text-[#777269] dark:text-[#A59D91] uppercase tracking-wider">
+        <p className="text-xs font-medium text-[#777269] uppercase tracking-wider">
           {product.brand}
         </p>
 
-        <h3 className="text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] group-hover:text-[#205BE8] dark:group-hover:text-[#3B82F6] transition-colors line-clamp-1">
+        <h3 className="text-sm font-bold text-[#201F1D] group-hover:text-[#205BE8] transition-colors line-clamp-1">
           {product.name}
         </h3>
 
@@ -100,23 +100,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 className={`w-3 h-3 ${
                   i < Math.floor(product.rating)
                     ? 'fill-amber-400 text-amber-400'
-                    : 'text-[#E7E1D7] dark:text-[#332E28] fill-[#E7E1D7] dark:fill-[#332E28]'
+                    : 'text-[#E7E1D7] fill-[#E7E1D7]'
                 }`}
               />
             ))}
           </div>
-          <span className="text-xs font-mono text-[#777269] dark:text-[#A59D91] tabular-nums">
+          <span className="text-xs font-mono text-[#777269] tabular-nums">
             ({product.reviewsCount.toLocaleString()})
           </span>
         </div>
 
         {/* Price Row */}
         <div className="flex items-baseline gap-2 pt-1">
-          <span className="text-base font-extrabold text-[#201F1D] dark:text-[#F3EFE8] font-mono tabular-nums">
+          <span className="text-base font-extrabold text-[#201F1D] font-mono tabular-nums">
             ${product.price.toFixed(2)}
           </span>
           {product.originalPrice && (
-            <span className="text-xs text-[#777269] dark:text-[#A59D91] line-through font-mono tabular-nums">
+            <span className="text-xs text-[#777269] line-through font-mono tabular-nums">
               ${product.originalPrice.toFixed(2)}
             </span>
           )}

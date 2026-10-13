@@ -38,7 +38,7 @@ export const FlashSaleBanner: React.FC = () => {
   const formatNumber = (num: number) => String(num).padStart(2, '0');
 
   return (
-    <section className="bg-[#181614] dark:bg-[#1C1916] text-[#ECE8E0] rounded-3xl p-6 sm:p-10 mb-8 relative overflow-hidden shadow-2xl border border-[#2B2724] dark:border-[#332E28]">
+    <section className="bg-[#181614] text-[#ECE8E0] rounded-3xl p-6 sm:p-10 mb-8 relative overflow-hidden shadow-2xl border border-[#2B2724]">
       {/* Background ambient radial glow */}
       <div
         className="absolute -right-20 -top-20 w-96 h-96 pointer-events-none rounded-full opacity-20"

@@ -201,14 +201,14 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[#F7F5F0] dark:bg-[#141210] py-6 px-4 sm:px-6 lg:px-8 animate-in fade-in duration-200 transition-colors"
+      className="min-h-screen bg-[#F7F5F0] py-6 px-4 sm:px-6 lg:px-8 animate-in fade-in duration-200 transition-colors"
     >
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Navigation Breadcrumb / Top Bar */}
         <div className="flex items-center justify-between">
           <button
             onClick={onClose}
-            className="neu-button inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] dark:hover:text-[#3B82F6] bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] px-4 py-2 rounded-xl cursor-pointer"
+            className="neu-button inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] hover:text-[#205BE8] bg-[#FFFFFF] border border-[#E7E1D7] px-4 py-2 rounded-xl cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Products</span>
@@ -218,18 +218,18 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSelectedProduct(prevProduct)}
-              className="neu-button p-2.5 rounded-xl bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] transition-colors cursor-pointer"
+              className="neu-button p-2.5 rounded-xl bg-[#FFFFFF] border border-[#E7E1D7] text-[#201F1D] hover:text-[#205BE8] transition-colors cursor-pointer"
               aria-label="Previous Product"
               title={`Previous: ${prevProduct.name}`}
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <span className="text-xs font-mono text-[#777269] dark:text-[#A59D91] tabular-nums">
+            <span className="text-xs font-mono text-[#777269] tabular-nums">
               {catalogIdx + 1} / {PRODUCTS.length}
             </span>
             <button
               onClick={() => setSelectedProduct(nextProduct)}
-              className="neu-button p-2.5 rounded-xl bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] transition-colors cursor-pointer"
+              className="neu-button p-2.5 rounded-xl bg-[#FFFFFF] border border-[#E7E1D7] text-[#201F1D] hover:text-[#205BE8] transition-colors cursor-pointer"
               aria-label="Next Product"
               title={`Next: ${nextProduct.name}`}
             >
@@ -239,15 +239,15 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
         </div>
 
         {/* Main Stage Panel with Soft Depth */}
-        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-6 sm:p-10 shadow-warm relative overflow-hidden transition-colors">
+        <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-3xl p-6 sm:p-10 shadow-warm relative overflow-hidden transition-colors">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column: Product Story & Title */}
             <div className="lg:col-span-4 space-y-5 order-2 lg:order-1">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#205BE8] dark:text-[#60A5FA] font-mono">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#205BE8] font-mono">
                   {product.brand} · {product.category}
                 </span>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight mt-1">
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-[#201F1D] tracking-tight mt-1">
                   {product.name}
                 </h1>
               </div>
@@ -261,28 +261,28 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                       className={`w-4 h-4 ${
                         i < Math.floor(product.rating)
                           ? 'fill-amber-400 text-amber-400'
-                          : 'text-[#E7E1D7] dark:text-[#332E28] fill-[#E7E1D7] dark:fill-[#332E28]'
+                          : 'text-[#E7E1D7] fill-[#E7E1D7]'
                       }`}
                     />
                   ))}
                 </div>
-                <span className="text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8]">{product.rating}</span>
-                <span className="text-xs text-[#777269] dark:text-[#A59D91] font-mono tabular-nums">
+                <span className="text-xs font-bold text-[#201F1D]">{product.rating}</span>
+                <span className="text-xs text-[#777269] font-mono tabular-nums">
                   ({product.reviewsCount} reviews)
                 </span>
               </div>
 
-              <p className="text-sm text-[#777269] dark:text-[#A59D91] leading-relaxed">
+              <p className="text-sm text-[#777269] leading-relaxed">
                 {product.description}
               </p>
 
               {/* Key Highlights Bullet List */}
               {product.features && (
                 <div className="pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#201F1D] dark:text-[#F3EFE8] mb-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#201F1D] mb-2">
                     Key Highlights
                   </h4>
-                  <ul className="space-y-1.5 text-xs text-[#777269] dark:text-[#A59D91]">
+                  <ul className="space-y-1.5 text-xs text-[#777269]">
                     {product.features.map((feat, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="text-[#205BE8] font-bold">✓</span>
@@ -296,7 +296,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
               {/* Stock Status Indicator */}
               <div className="pt-2 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                <span className="text-xs font-semibold text-[#201F1D] dark:text-[#F3EFE8]">
+                <span className="text-xs font-semibold text-[#201F1D]">
                   In Stock ({product.stockCount} units available)
                 </span>
               </div>
@@ -313,7 +313,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
               <div className="w-full max-w-[340px] relative flex flex-col items-center">
                 {product.modelUrl && (
                   <div className="mb-3">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#F0EDE6] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] text-[#201F1D] dark:text-[#F3EFE8] text-xs font-bold rounded-full shadow-2xs">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#F0EDE6] border border-[#E7E1D7] text-[#201F1D] text-xs font-bold rounded-full shadow-2xs">
                       <Box className="w-3.5 h-3.5 text-[#205BE8]" /> 3D View
                     </span>
                   </div>
@@ -330,7 +330,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                         pauseAutoplay();
                         handlePrev();
                       }}
-                      className="absolute left-1 z-20 p-2.5 rounded-full bg-[#FFFFFF]/90 dark:bg-[#221F1B]/90 text-[#201F1D] dark:text-[#F3EFE8] shadow-warm border border-[#E7E1D7] dark:border-[#332E28] transition-all hover:scale-105 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8]"
+                      className="absolute left-1 z-20 p-2.5 rounded-full bg-[#FFFFFF]/90 text-[#201F1D] shadow-warm border border-[#E7E1D7] transition-all hover:scale-105 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8]"
                       aria-label="Previous gallery image"
                     >
                       <ChevronLeft className="w-5 h-5" />
@@ -367,7 +367,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                         pauseAutoplay();
                         handleNext();
                       }}
-                      className="absolute right-1 z-20 p-2.5 rounded-full bg-[#FFFFFF]/90 dark:bg-[#221F1B]/90 text-[#201F1D] dark:text-[#F3EFE8] shadow-warm border border-[#E7E1D7] dark:border-[#332E28] transition-all hover:scale-105 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8]"
+                      className="absolute right-1 z-20 p-2.5 rounded-full bg-[#FFFFFF]/90 text-[#201F1D] shadow-warm border border-[#E7E1D7] transition-all hover:scale-105 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8]"
                       aria-label="Next gallery image"
                     >
                       <ChevronRight className="w-5 h-5" />
@@ -400,7 +400,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                         className={`transition-all rounded-full cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8] ${
                           currentIdx === i
                             ? 'w-6 h-2 bg-[#205BE8]'
-                            : 'w-2 h-2 bg-[#E7E1D7] dark:bg-[#332E28] hover:bg-[#777269]'
+                            : 'w-2 h-2 bg-[#E7E1D7] hover:bg-[#777269]'
                         }`}
                         aria-label={`View image ${i + 1} of ${images.length}`}
                         aria-selected={currentIdx === i}
@@ -414,14 +414,14 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
 
             {/* Right Column: Pricing, Variant Selection & Purchase Module */}
             <div className="lg:col-span-4 space-y-6 order-3">
-              <div className="border-b border-[#E7E1D7] dark:border-[#332E28] pb-5">
-                <span className="text-xs text-[#777269] dark:text-[#A59D91] font-semibold uppercase">Price</span>
+              <div className="border-b border-[#E7E1D7] pb-5">
+                <span className="text-xs text-[#777269] font-semibold uppercase">Price</span>
                 <div className="flex items-baseline gap-3 mt-1">
-                  <span className="text-3xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] font-mono tabular-nums">
+                  <span className="text-3xl font-extrabold text-[#201F1D] font-mono tabular-nums">
                     ${product.price.toFixed(2)}
                   </span>
                   {product.originalPrice && (
-                    <span className="text-lg text-[#777269] dark:text-[#A59D91] line-through font-mono tabular-nums">
+                    <span className="text-lg text-[#777269] line-through font-mono tabular-nums">
                       ${product.originalPrice.toFixed(2)}
                     </span>
                   )}
@@ -435,7 +435,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
 
               {product.sizes && product.sizes.length > 0 && (
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#201F1D] dark:text-[#F3EFE8] mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#201F1D] mb-2">
                     Choose your size
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -448,7 +448,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                           className={`min-w-[48px] px-3.5 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                             isSelected
                               ? 'bg-[#205BE8] border-[#205BE8] text-white shadow-warm'
-                              : 'neu-button bg-[#FFFFFF] dark:bg-[#221F1B] border-[#E7E1D7] dark:border-[#332E28] text-[#201F1D] dark:text-[#F3EFE8] hover:border-[#205BE8]'
+                              : 'neu-button bg-[#FFFFFF] border-[#E7E1D7] text-[#201F1D] hover:border-[#205BE8]'
                           }`}
                         >
                           {sz}
@@ -461,8 +461,8 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
 
               {product.colors && product.colors.length > 0 && (
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#201F1D] dark:text-[#F3EFE8] mb-2">
-                    Color: <span className="font-semibold text-[#777269] dark:text-[#A59D91]">{selectedColor}</span>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#201F1D] mb-2">
+                    Color: <span className="font-semibold text-[#777269]">{selectedColor}</span>
                   </label>
                   <div className="flex items-center gap-2">
                     {product.colors.map((c) => {
@@ -473,8 +473,8 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                           onClick={() => setSelectedColor(c.name)}
                           className={`w-8 h-8 rounded-full border-2 transition-transform cursor-pointer ${
                             isSelected
-                              ? 'scale-110 ring-2 ring-[#205BE8] ring-offset-2 dark:ring-offset-[#1C1916]'
-                              : 'hover:scale-105 border-[#E7E1D7] dark:border-[#332E28]'
+                              ? 'scale-110 ring-2 ring-[#205BE8] ring-offset-2'
+                              : 'hover:scale-105 border-[#E7E1D7]'
                           }`}
                           style={{ backgroundColor: c.hex }}
                           title={c.name}
@@ -488,20 +488,20 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center border border-[#E7E1D7] dark:border-[#332E28] rounded-xl bg-[#F0EDE6]/50 dark:bg-[#221F1B]/60 p-1">
+                  <div className="flex items-center border border-[#E7E1D7] rounded-xl bg-[#F0EDE6]/50 p-1">
                     <button
                       onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                      className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8] font-bold text-sm shadow-xs hover:bg-[#F0EDE6] flex items-center justify-center cursor-pointer"
+                      className="w-8 h-8 rounded-lg bg-[#FFFFFF] text-[#201F1D] font-bold text-sm shadow-xs hover:bg-[#F0EDE6] flex items-center justify-center cursor-pointer"
                       aria-label="Decrease quantity"
                     >
                       -
                     </button>
-                    <span className="w-10 text-center font-bold text-sm font-mono tabular-nums text-[#201F1D] dark:text-[#F3EFE8]">
+                    <span className="w-10 text-center font-bold text-sm font-mono tabular-nums text-[#201F1D]">
                       {quantity}
                     </span>
                     <button
                       onClick={() => setQuantity((q) => q + 1)}
-                      className="w-8 h-8 rounded-lg bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8] font-bold text-sm shadow-xs hover:bg-[#F0EDE6] flex items-center justify-center cursor-pointer"
+                      className="w-8 h-8 rounded-lg bg-[#FFFFFF] text-[#201F1D] font-bold text-sm shadow-xs hover:bg-[#F0EDE6] flex items-center justify-center cursor-pointer"
                       aria-label="Increase quantity"
                     >
                       +
@@ -530,7 +530,7 @@ export const ProductSpinViewer: React.FC<ProductSpinViewerProps> = ({ product, o
                   </button>
                 </div>
 
-                <p className="text-[11px] text-[#777269] dark:text-[#A59D91] text-center">
+                <p className="text-[11px] text-[#777269] text-center">
                   🚚 Free standard shipping & 30-day effortless returns
                 </p>
               </div>

@@ -15,19 +15,19 @@ export const NotFoundView: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto py-20 px-4 text-center animate-in fade-in">
-      <div className="w-20 h-20 rounded-3xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] dark:text-[#3B82F6] mx-auto flex items-center justify-center mb-6 shadow-warm border border-[#E7E1D7] dark:border-[#332E28]">
+      <div className="w-20 h-20 rounded-3xl bg-[#F0EDE6] text-[#205BE8] mx-auto flex items-center justify-center mb-6 shadow-warm border border-[#E7E1D7]">
         <Compass className="w-10 h-10 animate-spin [animation-duration:8s]" />
       </div>
 
-      <span className="text-xs font-mono font-bold text-[#205BE8] dark:text-[#60A5FA] uppercase tracking-widest bg-[#205BE8]/10 dark:bg-[#205BE8]/20 px-3 py-1 rounded-full border border-[#205BE8]/20">
+      <span className="text-xs font-mono font-bold text-[#205BE8] uppercase tracking-widest bg-[#205BE8]/10 px-3 py-1 rounded-full border border-[#205BE8]/20">
         Error 404 · Page Not Found
       </span>
 
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] mt-4 tracking-tight">
+      <h1 className="text-3xl sm:text-4xl font-extrabold text-[#201F1D] mt-4 tracking-tight">
         Lost in transit?
       </h1>
 
-      <p className="text-sm text-[#777269] dark:text-[#A59D91] mt-2 mb-8 max-w-md mx-auto leading-relaxed">
+      <p className="text-sm text-[#777269] mt-2 mb-8 max-w-md mx-auto leading-relaxed">
         The link you followed may be expired or the product category was relocated. Let's get you back to the collection.
       </p>
 
@@ -41,7 +41,7 @@ export const NotFoundView: React.FC = () => {
         </button>
         <button
           onClick={handleGoBack}
-          className="neu-button px-5 py-3 bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] hover:bg-[#F0EDE6] dark:hover:bg-[#221F1B] text-[#201F1D] dark:text-[#F3EFE8] font-semibold rounded-xl text-sm shadow-warm transition-colors cursor-pointer inline-flex items-center gap-2"
+          className="neu-button px-5 py-3 bg-[#FFFFFF] border border-[#E7E1D7] hover:bg-[#F0EDE6] text-[#201F1D] font-semibold rounded-xl text-sm shadow-warm transition-colors cursor-pointer inline-flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Go Back</span>

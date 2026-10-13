@@ -73,14 +73,14 @@ export const DealsView: React.FC = () => {
       {/* Return to shop */}
       <button
         onClick={() => setActiveTab('shop')}
-        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] dark:hover:text-[#3B82F6] mb-6 cursor-pointer"
+        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] hover:text-[#205BE8] mb-6 cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Shop</span>
       </button>
 
-      {/* Header and Countdown */}
-      <div className="bg-[#181614] dark:bg-[#1C1916] text-[#ECE8E0] rounded-3xl p-6 sm:p-8 mb-8 border border-[#2B2724] dark:border-[#332E28] shadow-2xl">
+      {/* Header and Countdown with Charcoal Band and Accent Contrast */}
+      <div className="bg-[#181614] text-[#ECE8E0] rounded-3xl p-6 sm:p-8 mb-8 border border-[#2B2724] shadow-2xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 text-amber-400 text-xs font-bold tracking-wider uppercase">
@@ -140,8 +140,8 @@ export const DealsView: React.FC = () => {
       {dealProducts.length > 0 ? (
         <div>
           <div className="flex items-center justify-between mb-4">
-            <p className="text-xs sm:text-sm font-semibold text-[#777269] dark:text-[#A59D91]">
-              Showing <span className="text-[#201F1D] dark:text-[#F3EFE8] font-bold">{dealProducts.length}</span> items with active promotional pricing
+            <p className="text-xs sm:text-sm font-semibold text-[#777269]">
+              Showing <span className="text-[#201F1D] font-bold">{dealProducts.length}</span> items with active promotional pricing
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -151,12 +151,12 @@ export const DealsView: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-12 text-center shadow-warm max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] flex items-center justify-center mx-auto mb-4">
+        <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-3xl p-12 text-center shadow-warm max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] text-[#205BE8] flex items-center justify-center mx-auto mb-4">
             <Sparkles className="w-8 h-8" />
           </div>
-          <h2 className="text-xl font-bold text-[#201F1D] dark:text-[#F3EFE8]">No Active Deals Right Now</h2>
-          <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-2 mb-6">
+          <h2 className="text-xl font-bold text-[#201F1D]">No Active Deals Right Now</h2>
+          <p className="text-xs sm:text-sm text-[#777269] mt-2 mb-6">
             All promotional inventory has currently concluded. Check back soon or explore our complete catalog.
           </p>
           <button

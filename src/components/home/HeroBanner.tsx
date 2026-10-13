@@ -53,21 +53,21 @@ export const HeroBanner: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#F0EDE6] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-[28px] p-6 sm:p-10 shadow-warm mb-8 transition-colors duration-200">
+    <section className="relative overflow-hidden bg-[#F0EDE6] border border-[#E7E1D7] rounded-[28px] p-6 sm:p-10 shadow-warm mb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left Copy Column */}
         <div className="lg:col-span-6 space-y-6">
           {/* Subtle soft-neumorphic pill badge */}
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] text-[#205BE8] dark:text-[#60A5FA] text-xs font-bold tracking-wider uppercase shadow-xs">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E1D7] text-[#205BE8] text-xs font-bold tracking-wider uppercase shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>New Collection 2026</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight leading-[1.12]">
-            Elevate Your Everyday <span className="text-[#205BE8] dark:text-[#3B82F6]">Accessories</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#201F1D] tracking-tight leading-[1.12]">
+            Elevate Your Everyday <span className="text-[#205BE8]">Accessories</span>
           </h1>
 
-          <p className="text-base text-[#777269] dark:text-[#A59D91] max-w-lg leading-relaxed">
+          <p className="text-base text-[#777269] max-w-lg leading-relaxed">
             Premium tech accessories engineered for modern work, travel, and seamless lifestyle integration. Precision materials built to endure.
           </p>
 
@@ -83,27 +83,27 @@ export const HeroBanner: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('deals')}
-              className="neu-button inline-flex items-center gap-2 px-6 py-3.5 bg-[#FFFFFF] dark:bg-[#221F1B] text-[#201F1D] dark:text-[#F3EFE8] border border-[#E7E1D7] dark:border-[#332E28] font-semibold rounded-xl cursor-pointer"
+              className="neu-button inline-flex items-center gap-2 px-6 py-3.5 bg-[#FFFFFF] text-[#201F1D] border border-[#E7E1D7] font-semibold rounded-xl cursor-pointer"
             >
               Explore Deals
             </button>
           </div>
 
           {/* Social Proof Row */}
-          <div className="pt-4 border-t border-[#E7E1D7] dark:border-[#332E28] flex items-center gap-4">
+          <div className="pt-4 border-t border-[#E7E1D7] flex items-center gap-4">
             <div>
               <div className="flex items-center gap-1 text-amber-500">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 ))}
-                <span className="text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] ml-1">
+                <span className="text-xs font-bold text-[#201F1D] ml-1">
                   {HERO_SOCIAL_PROOF.ratingText}
                 </span>
-                <span className="text-xs text-[#777269] dark:text-[#A59D91]">
+                <span className="text-xs text-[#777269]">
                   {HERO_SOCIAL_PROOF.reviewsText}
                 </span>
               </div>
-              <p className="text-xs font-semibold text-[#201F1D] dark:text-[#F3EFE8] mt-0.5">
+              <p className="text-xs font-semibold text-[#201F1D] mt-0.5">
                 {HERO_SOCIAL_PROOF.customerCountText}
               </p>
             </div>
@@ -122,9 +122,9 @@ export const HeroBanner: React.FC = () => {
               perspective: '1200px',
             }}
           >
-            {/* Deep Charcoal Card Container */}
+            {/* Deep Charcoal Card Container with Soft Morphism Contrast */}
             <div
-              className="relative rounded-3xl p-6 sm:p-8 bg-[#181614] border border-[#2B2724] dark:border-[#38322B] shadow-2xl transition-transform duration-200 ease-out overflow-hidden"
+              className="relative rounded-3xl p-6 sm:p-8 bg-[#181614] border border-[#2B2724] shadow-2xl transition-transform duration-200 ease-out overflow-hidden"
               style={{
                 transform: canTilt && isHovered
                   ? `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`
@@ -167,18 +167,18 @@ export const HeroBanner: React.FC = () => {
                 className="absolute top-4 right-4 z-30 animate-hero-float"
                 style={{
                   transform: canTilt && isHovered
-                    ? `translateZ(24px)`
+                    ? 'translateZ(24px)'
                     : 'none',
                 }}
               >
                 <div className="glass-badge rounded-2xl px-3.5 py-2 flex flex-col items-center justify-center text-center shadow-lg">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#205BE8] dark:text-[#60A5FA]">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#205BE8]">
                     Up to
                   </span>
-                  <span className="text-xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] leading-none">
+                  <span className="text-xl font-extrabold text-[#201F1D] leading-none">
                     50% OFF
                   </span>
-                  <span className="text-[9px] font-semibold text-[#777269] dark:text-[#A59D91]">
+                  <span className="text-[9px] font-semibold text-[#777269]">
                     Limited Run
                   </span>
                 </div>

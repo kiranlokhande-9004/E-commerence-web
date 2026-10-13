@@ -9,11 +9,11 @@ export const OrderConfirmationView: React.FC = () => {
   if (!lastOrder) {
     return (
       <div className="max-w-2xl mx-auto py-16 px-4 text-center animate-in fade-in">
-        <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#777269] dark:text-[#A59D91] mx-auto flex items-center justify-center mb-4 border border-[#E7E1D7] dark:border-[#332E28]">
+        <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] text-[#777269] mx-auto flex items-center justify-center mb-4 border border-[#E7E1D7]">
           <Package className="w-8 h-8 text-[#205BE8]" />
         </div>
-        <h2 className="text-xl font-bold text-[#201F1D] dark:text-[#F3EFE8]">No recent order found</h2>
-        <p className="text-sm text-[#777269] dark:text-[#A59D91] mt-2 mb-6 max-w-sm mx-auto">
+        <h2 className="text-xl font-bold text-[#201F1D]">No recent order found</h2>
+        <p className="text-sm text-[#777269] mt-2 mb-6 max-w-sm mx-auto">
           You don't have an active confirmation session. Past orders can be reviewed in your order history.
         </p>
         <div className="flex items-center justify-center gap-3">
@@ -26,7 +26,7 @@ export const OrderConfirmationView: React.FC = () => {
           </button>
           <button
             onClick={() => setActiveTab('orders')}
-            className="neu-button px-5 py-2.5 bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] text-[#201F1D] dark:text-[#F3EFE8] rounded-xl font-semibold text-sm cursor-pointer transition-colors"
+            className="neu-button px-5 py-2.5 bg-[#FFFFFF] border border-[#E7E1D7] text-[#201F1D] rounded-xl font-semibold text-sm cursor-pointer transition-colors"
           >
             View Order History
           </button>
@@ -46,46 +46,46 @@ export const OrderConfirmationView: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 animate-in fade-in">
       {/* Success Hero Header with Soft Depth */}
-      <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-6 sm:p-8 text-center shadow-warm mb-8 transition-colors">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center mb-4 border border-emerald-200 dark:border-emerald-900/50">
+      <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-3xl p-6 sm:p-8 text-center shadow-warm mb-8">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center mb-4 border border-emerald-200">
           <CheckCircle className="w-10 h-10" />
         </div>
-        <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+        <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
           Payment & Order Successful
         </span>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] mt-1 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] mt-1 tracking-tight">
           Thank you for your order!
         </h1>
-        <p className="text-sm text-[#777269] dark:text-[#A59D91] max-w-md mx-auto mt-2">
+        <p className="text-sm text-[#777269] max-w-md mx-auto mt-2">
           We’ve received your order and will notify you at{' '}
-          <span className="font-semibold text-[#201F1D] dark:text-[#F3EFE8]">{lastOrder.shippingAddress.email}</span> when it ships.
+          <span className="font-semibold text-[#201F1D]">{lastOrder.shippingAddress.email}</span> when it ships.
         </p>
 
         {/* Quick Meta Badges */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs">
-          <div className="px-3.5 py-1.5 bg-[#F0EDE6] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl shadow-2xs">
-            <span className="text-[#777269] dark:text-[#A59D91]">Order ID: </span>
-            <span className="font-mono font-bold text-[#201F1D] dark:text-[#F3EFE8]">{lastOrder.id}</span>
+          <div className="px-3.5 py-1.5 bg-[#F0EDE6] border border-[#E7E1D7] rounded-xl shadow-2xs">
+            <span className="text-[#777269]">Order ID: </span>
+            <span className="font-mono font-bold text-[#201F1D]">{lastOrder.id}</span>
           </div>
-          <div className="px-3.5 py-1.5 bg-[#F0EDE6] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl shadow-2xs">
-            <span className="text-[#777269] dark:text-[#A59D91]">Tracking: </span>
-            <span className="font-mono font-bold text-[#205BE8] dark:text-[#60A5FA]">{lastOrder.trackingNumber}</span>
+          <div className="px-3.5 py-1.5 bg-[#F0EDE6] border border-[#E7E1D7] rounded-xl shadow-2xs">
+            <span className="text-[#777269]">Tracking: </span>
+            <span className="font-mono font-bold text-[#205BE8]">{lastOrder.trackingNumber}</span>
           </div>
-          <div className="px-3.5 py-1.5 bg-[#F0EDE6] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl shadow-2xs">
-            <span className="text-[#777269] dark:text-[#A59D91]">Payment: </span>
-            <span className="font-bold text-[#201F1D] dark:text-[#F3EFE8]">{lastOrder.paymentMethod}</span>
+          <div className="px-3.5 py-1.5 bg-[#F0EDE6] border border-[#E7E1D7] rounded-xl shadow-2xs">
+            <span className="text-[#777269]">Payment: </span>
+            <span className="font-bold text-[#201F1D]">{lastOrder.paymentMethod}</span>
           </div>
         </div>
       </div>
 
       {/* Live Tracking Progress Bar */}
-      <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-2xl p-6 sm:p-8 shadow-warm mb-8 transition-colors">
+      <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-2xl p-6 sm:p-8 shadow-warm mb-8">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-base font-bold text-[#201F1D] dark:text-[#F3EFE8] flex items-center gap-2">
+          <h3 className="text-base font-bold text-[#201F1D] flex items-center gap-2">
             <Truck className="w-5 h-5 text-[#205BE8]" />
             <span>Delivery Tracking Progress</span>
           </h3>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#205BE8]/10 text-[#205BE8] dark:text-[#60A5FA]">
+          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#205BE8]/10 text-[#205BE8]">
             Status: {lastOrder.status}
           </span>
         </div>
@@ -97,13 +97,13 @@ export const OrderConfirmationView: React.FC = () => {
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs mb-2 transition-all ${
                   step.completed
                     ? 'bg-[#205BE8] text-white shadow-warm'
-                    : 'bg-[#F0EDE6] dark:bg-[#221F1B] text-[#777269] dark:text-[#A59D91] border border-[#E7E1D7] dark:border-[#332E28]'
+                    : 'bg-[#F0EDE6] text-[#777269] border border-[#E7E1D7]'
                 }`}
               >
                 {step.completed ? '✓' : idx + 1}
               </div>
-              <span className="text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8]">{step.title}</span>
-              <span className="text-[11px] text-[#777269] dark:text-[#A59D91] mt-0.5">{step.date}</span>
+              <span className="text-xs font-bold text-[#201F1D]">{step.title}</span>
+              <span className="text-[11px] text-[#777269] mt-0.5">{step.date}</span>
             </div>
           ))}
         </div>
@@ -119,7 +119,7 @@ export const OrderConfirmationView: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('orders')}
-          className="neu-button px-6 py-3 bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] hover:bg-[#F0EDE6] dark:hover:bg-[#221F1B] text-[#201F1D] dark:text-[#F3EFE8] rounded-xl text-sm font-bold shadow-warm transition-colors cursor-pointer"
+          className="neu-button px-6 py-3 bg-[#FFFFFF] border border-[#E7E1D7] hover:bg-[#F0EDE6] text-[#201F1D] rounded-xl text-sm font-bold shadow-warm transition-colors cursor-pointer"
         >
           View All Orders
         </button>

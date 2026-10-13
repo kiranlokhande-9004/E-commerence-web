@@ -19,22 +19,22 @@ export const NewArrivalsView: React.FC = () => {
       {/* Return to shop */}
       <button
         onClick={() => setActiveTab('shop')}
-        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] dark:hover:text-[#3B82F6] mb-6 cursor-pointer"
+        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] hover:text-[#205BE8] mb-6 cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Shop</span>
       </button>
 
       {/* Header */}
-      <div className="bg-[#F0EDE6] dark:bg-[#1C1916] rounded-3xl p-6 sm:p-8 mb-8 border border-[#E7E1D7] dark:border-[#332E28] shadow-warm transition-colors">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] text-[#205BE8] dark:text-[#60A5FA] text-xs font-bold tracking-wider uppercase mb-3 shadow-2xs">
+      <div className="bg-[#F0EDE6] rounded-3xl p-6 sm:p-8 mb-8 border border-[#E7E1D7] shadow-warm">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E7E1D7] text-[#205BE8] text-xs font-bold tracking-wider uppercase mb-3 shadow-2xs">
           <Sparkles className="w-3.5 h-3.5" />
           <span>Fresh Releases</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#201F1D] tracking-tight">
           New Arrivals Collection
         </h1>
-        <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-2 max-w-xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#777269] mt-2 max-w-xl leading-relaxed">
           The latest engineering breakthroughs in smart connectivity, tactile mechanical switches, and durable weather-resistant everyday carry.
         </p>
       </div>
@@ -43,8 +43,8 @@ export const NewArrivalsView: React.FC = () => {
       {newArrivals.length > 0 ? (
         <div>
           <div className="flex items-center justify-between mb-4">
-            <p className="text-xs sm:text-sm font-semibold text-[#777269] dark:text-[#A59D91]">
-              Showing <span className="text-[#201F1D] dark:text-[#F3EFE8] font-bold">{newArrivals.length}</span> newly released items
+            <p className="text-xs sm:text-sm font-semibold text-[#777269]">
+              Showing <span className="text-[#201F1D] font-bold">{newArrivals.length}</span> newly released items
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -54,12 +54,12 @@ export const NewArrivalsView: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-12 text-center shadow-warm max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] flex items-center justify-center mx-auto mb-4">
+        <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-3xl p-12 text-center shadow-warm max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] text-[#205BE8] flex items-center justify-center mx-auto mb-4">
             <Sparkles className="w-8 h-8" />
           </div>
-          <h2 className="text-xl font-bold text-[#201F1D] dark:text-[#F3EFE8]">No New Releases Today</h2>
-          <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-2 mb-6">
+          <h2 className="text-xl font-bold text-[#201F1D]">No New Releases Today</h2>
+          <p className="text-xs sm:text-sm text-[#777269] mt-2 mb-6">
             We are curating our next batch of gear. Discover the full inventory in the main shop.
           </p>
           <button

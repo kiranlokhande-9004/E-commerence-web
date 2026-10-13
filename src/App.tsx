@@ -127,18 +127,18 @@ const MainContent: React.FC = () => {
           </div>
 
           {/* Featured Products Section with rhythmic panel backdrop */}
-          <div className="bg-[#F0EDE6]/60 dark:bg-[#1C1916]/60 py-10 border-y border-[#E7E1D7] dark:border-[#332E28] transition-colors">
+          <div className="bg-[#F0EDE6]/70 py-10 border-y border-[#E7E1D7]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#201F1D] tracking-tight">
                     Featured Products
                   </h2>
-                  <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-0.5">Top-rated accessories crafted for endurance</p>
+                  <p className="text-xs text-[#777269] mt-0.5">Top-rated accessories crafted for endurance</p>
                 </div>
                 <button
                   onClick={() => setActiveTab('shop')}
-                  className="text-xs sm:text-sm font-semibold text-[#205BE8] dark:text-[#3B82F6] hover:text-[#174AC4] inline-flex items-center gap-1 cursor-pointer transition-colors"
+                  className="text-xs sm:text-sm font-semibold text-[#205BE8] hover:text-[#174AC4] inline-flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <span>View All Products</span>
                   <ArrowRight className="w-4 h-4" />
@@ -164,18 +164,18 @@ const MainContent: React.FC = () => {
           </div>
 
           {/* New Arrivals Section with rhythmic panel backdrop */}
-          <div className="bg-[#F0EDE6]/60 dark:bg-[#1C1916]/60 py-10 border-y border-[#E7E1D7] dark:border-[#332E28] transition-colors">
+          <div className="bg-[#F0EDE6]/70 py-10 border-y border-[#E7E1D7]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#201F1D] tracking-tight">
                     New Arrivals
                   </h2>
-                  <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-0.5">Freshly released tech and lifestyle essentials</p>
+                  <p className="text-xs text-[#777269] mt-0.5">Freshly released tech and lifestyle essentials</p>
                 </div>
                 <button
                   onClick={() => setActiveTab('new-arrivals')}
-                  className="text-xs sm:text-sm font-semibold text-[#205BE8] dark:text-[#3B82F6] hover:text-[#174AC4] inline-flex items-center gap-1 cursor-pointer transition-colors"
+                  className="text-xs sm:text-sm font-semibold text-[#205BE8] hover:text-[#174AC4] inline-flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <span>View All New Arrivals</span>
                   <ArrowRight className="w-4 h-4" />
@@ -200,7 +200,7 @@ export default function App() {
   return (
     <ErrorBoundary>
       <StoreProvider>
-        <div className="min-h-screen flex flex-col bg-[#F7F5F0] dark:bg-[#141210] text-[#201F1D] dark:text-[#F3EFE8] font-['Plus_Jakarta_Sans'] antialiased relative transition-colors duration-200">
+        <div className="min-h-screen flex flex-col bg-[#F7F5F0] text-[#201F1D] font-['Plus_Jakarta_Sans'] antialiased relative">
           {/* Static grain overlay */}
           <div className="grain-overlay" aria-hidden="true" />
 

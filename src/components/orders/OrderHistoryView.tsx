@@ -9,10 +9,10 @@ export const OrderHistoryView: React.FC = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#201F1D] tracking-tight">
             Order History & Tracking
           </h1>
-          <p className="text-sm text-[#777269] dark:text-[#A59D91] mt-1">
+          <p className="text-sm text-[#777269] mt-1">
             Review active deliveries, tracking codes, and past order invoices.
           </p>
         </div>
@@ -25,12 +25,12 @@ export const OrderHistoryView: React.FC = () => {
       </div>
 
       {orders.length === 0 ? (
-        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-12 text-center shadow-warm">
-          <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] mx-auto flex items-center justify-center mb-4 border border-[#E7E1D7] dark:border-[#332E28]">
+        <div className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-3xl p-12 text-center shadow-warm">
+          <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] text-[#205BE8] mx-auto flex items-center justify-center mb-4 border border-[#E7E1D7]">
             <Package className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-bold text-[#201F1D] dark:text-[#F3EFE8]">No orders placed yet</h3>
-          <p className="text-sm text-[#777269] dark:text-[#A59D91] mt-1 mb-6 max-w-sm mx-auto">
+          <h3 className="text-lg font-bold text-[#201F1D]">No orders placed yet</h3>
+          <p className="text-sm text-[#777269] mt-1 mb-6 max-w-sm mx-auto">
             Once you complete a purchase, your real-time tracking updates and digital receipts will show up here.
           </p>
           <button
@@ -45,29 +45,29 @@ export const OrderHistoryView: React.FC = () => {
           {orders.map((order) => (
             <div
               key={order.id}
-              className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-2xl p-6 shadow-warm space-y-4 transition-colors"
+              className="bg-[#FFFFFF] border border-[#E7E1D7] rounded-2xl p-6 shadow-warm space-y-4"
             >
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E7E1D7] dark:border-[#332E28] pb-4">
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E7E1D7] pb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] flex items-center justify-center font-bold text-sm border border-[#E7E1D7] dark:border-[#332E28]">
+                  <div className="w-10 h-10 rounded-xl bg-[#F0EDE6] text-[#205BE8] flex items-center justify-center font-bold text-sm border border-[#E7E1D7]">
                     <Package className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8]">
-                      Order <span className="font-mono text-[#205BE8] dark:text-[#60A5FA]">{order.id}</span>
+                    <h3 className="text-sm font-bold text-[#201F1D]">
+                      Order <span className="font-mono text-[#205BE8]">{order.id}</span>
                     </h3>
-                    <p className="text-xs text-[#777269] dark:text-[#A59D91]">
+                    <p className="text-xs text-[#777269]">
                       Placed on {new Date(order.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold px-3 py-1 bg-[#205BE8]/10 text-[#205BE8] dark:text-[#60A5FA] rounded-full">
+                  <span className="text-xs font-bold px-3 py-1 bg-[#205BE8]/10 text-[#205BE8] rounded-full">
                     {order.status}
                   </span>
                   <div className="text-right">
-                    <span className="text-sm font-extrabold text-[#201F1D] dark:text-[#F3EFE8] font-mono tabular-nums">
+                    <span className="text-sm font-extrabold text-[#201F1D] font-mono tabular-nums">
                       ${order.total.toFixed(2)}
                     </span>
                   </div>
@@ -76,20 +76,20 @@ export const OrderHistoryView: React.FC = () => {
 
               {/* Items summary */}
               <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#777269] dark:text-[#A59D91]">Items</h4>
-                <div className="divide-y divide-[#E7E1D7] dark:divide-[#332E28]">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#777269]">Items</h4>
+                <div className="divide-y divide-[#E7E1D7]">
                   {order.items.map((item, idx) => (
                     <div key={idx} className="py-2 flex items-center justify-between text-xs">
                       <div className="flex items-center gap-2 truncate">
-                        <span className="font-bold text-[#777269] dark:text-[#A59D91]">{item.quantity}×</span>
-                        <span className="font-semibold text-[#201F1D] dark:text-[#F3EFE8] truncate">{item.product.name}</span>
+                        <span className="font-bold text-[#777269]">{item.quantity}×</span>
+                        <span className="font-semibold text-[#201F1D] truncate">{item.product.name}</span>
                         {(item.selectedSize || item.selectedColor) && (
-                          <span className="text-[#777269] dark:text-[#A59D91]">
+                          <span className="text-[#777269]">
                             ({[item.selectedSize, item.selectedColor].filter(Boolean).join(', ')})
                           </span>
                         )}
                       </div>
-                      <span className="font-mono text-[#201F1D] dark:text-[#F3EFE8] tabular-nums font-semibold">
+                      <span className="font-mono text-[#201F1D] tabular-nums font-semibold">
                         ${(item.product.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
@@ -98,15 +98,15 @@ export const OrderHistoryView: React.FC = () => {
               </div>
 
               {/* Delivery Meta Strip */}
-              <div className="pt-3 border-t border-[#E7E1D7] dark:border-[#332E28] flex flex-wrap items-center justify-between gap-4 text-xs">
-                <div className="flex items-center gap-2 text-[#777269] dark:text-[#A59D91]">
+              <div className="pt-3 border-t border-[#E7E1D7] flex flex-wrap items-center justify-between gap-4 text-xs">
+                <div className="flex items-center gap-2 text-[#777269]">
                   <Truck className="w-4 h-4 text-[#205BE8]" />
                   <span>
-                    Tracking: <strong className="font-mono text-[#201F1D] dark:text-[#F3EFE8]">{order.trackingNumber}</strong>
+                    Tracking: <strong className="font-mono text-[#201F1D]">{order.trackingNumber}</strong>
                   </span>
                 </div>
-                <div className="text-[#777269] dark:text-[#A59D91]">
-                  Shipping to: <span className="font-semibold text-[#201F1D] dark:text-[#F3EFE8]">{order.shippingAddress.fullName}</span>, {order.shippingAddress.city}
+                <div className="text-[#777269]">
+                  Shipping to: <span className="font-semibold text-[#201F1D]">{order.shippingAddress.fullName}</span>, {order.shippingAddress.city}
                 </div>
               </div>
             </div>
