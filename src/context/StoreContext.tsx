@@ -52,7 +52,7 @@ interface StoreContextType {
   isCatHidden: boolean;
   setIsCatHidden: (hidden: boolean) => void;
 
-  // Cookie Consent (Checklist Item 5)
+  // Cookie Consent
   cookieConsent: 'granted' | 'denied' | null;
   setConsent: (granted: boolean) => void;
 }
@@ -66,6 +66,16 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured');
+
+  // Enforce Light Theme Only per design requirement
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove('dark');
+    root.classList.add('light');
+    try {
+      localStorage.removeItem('bomato_theme');
+    } catch {}
+  }, []);
 
   // Cart
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -124,7 +134,15 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       return [];
     }
   });
-  const [lastOrder, setLastOrder] = useState<Order | null>(null);
+
+  const [lastOrder, setLastOrder] = useState<Order | null>(() => {
+    try {
+      const saved = localStorage.getItem('bomato_last_order');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
 
   // Cat 3D toggle
   const [isCatHidden, setIsCatHidden] = useState<boolean>(() => {
@@ -156,54 +174,84 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Persist cart
   useEffect(() => {
-    localStorage.setItem('bomato_cart', JSON.stringify(cart));
+    try {
+      localStorage.setItem('bomato_cart', JSON.stringify(cart));
+    } catch {}
   }, [cart]);
 
   // Persist wishlist
   useEffect(() => {
-    localStorage.setItem('bomato_wishlist', JSON.stringify(wishlist));
+    try {
+      localStorage.setItem('bomato_wishlist', JSON.stringify(wishlist));
+    } catch {}
   }, [wishlist]);
 
   // Persist user
   useEffect(() => {
-    if (user) {
-      localStorage.setItem('bomato_user', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('bomato_user');
-    }
+    try {
+      if (user) {
+        localStorage.setItem('bomato_user', JSON.stringify(user));
+      } else {
+        localStorage.removeItem('bomato_user');
+      }
+    } catch {}
   }, [user]);
 
   // Persist orders
   useEffect(() => {
-    localStorage.setItem('bomato_orders', JSON.stringify(orders));
+    try {
+      localStorage.setItem('bomato_orders', JSON.stringify(orders));
+    } catch {}
   }, [orders]);
 
-  // Persist cat toggle (guarded in try/catch)
+  // Persist lastOrder
+  useEffect(() => {
+    try {
+      if (lastOrder) {
+        localStorage.setItem('bomato_last_order', JSON.stringify(lastOrder));
+      }
+    } catch {}
+  }, [lastOrder]);
+
+  // Persist cat toggle
   useEffect(() => {
     try {
       localStorage.setItem('bomato_hide_cat', String(isCatHidden));
-    } catch {
-      // Ignored if storage is restricted
-    }
+    } catch {}
   }, [isCatHidden]);
 
   // Handle URL hash navigation for clean browser history & direct links
   useEffect(() => {
     const handleHash = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (!hash) {
+      const rawHash = window.location.hash.replace('#', '').toLowerCase();
+      if (!rawHash) {
         setActiveTabState('home');
         return;
       }
-      if (hash.startsWith('product=')) {
-        const prodId = hash.replace('product=', '');
+      if (rawHash.startsWith('product=')) {
+        const prodId = rawHash.replace('product=', '');
         const found = PRODUCTS.find((p) => p.id === prodId);
         if (found) {
           setSelectedProductState(found);
           setActiveTabState('product-detail');
+        } else {
+          setActiveTabState('not-found');
         }
-      } else if (['home', 'shop', 'categories', 'deals', 'new-arrivals', 'about', 'wishlist', 'checkout', 'orders', 'privacy', 'terms'].includes(hash)) {
-        setActiveTabState(hash);
+      } else if ([
+        'home',
+        'shop',
+        'categories',
+        'deals',
+        'new-arrivals',
+        'about',
+        'wishlist',
+        'checkout',
+        'order-confirmation',
+        'orders',
+        'privacy',
+        'terms',
+      ].includes(rawHash)) {
+        setActiveTabState(rawHash);
       } else {
         // Unknown route hash: route to not-found
         setActiveTabState('not-found');
@@ -365,7 +413,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const setConsent = (granted: boolean) => {
     const val = granted ? 'granted' : 'denied';
     setCookieConsentState(val);
-    localStorage.setItem('bomato_cookie_consent', val);
+    try {
+      localStorage.setItem('bomato_cookie_consent', val);
+    } catch {}
   };
 
   return (
