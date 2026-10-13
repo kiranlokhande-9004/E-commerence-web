@@ -7,7 +7,6 @@ import { AssetSlot } from '../common/AssetSlot';
 export const CategoriesView: React.FC = () => {
   const { setActiveTab, setSelectedCategory } = useStore();
 
-  // Compute exact product counts dynamically from actual PRODUCTS catalog
   const countsByCategory = useMemo(() => {
     const map: Record<string, number> = {};
     CATEGORIES.forEach((cat) => {
@@ -24,21 +23,21 @@ export const CategoriesView: React.FC = () => {
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
       case 'backpack':
-        return <Backpack className="w-5 h-5 text-[#1A56DB]" />;
+        return <Backpack className="w-5 h-5 text-[#205BE8]" />;
       case 'headphones':
-        return <Headphones className="w-5 h-5 text-[#1A56DB]" />;
+        return <Headphones className="w-5 h-5 text-[#205BE8]" />;
       case 'watch':
-        return <Watch className="w-5 h-5 text-[#1A56DB]" />;
+        return <Watch className="w-5 h-5 text-[#205BE8]" />;
       case 'wallet':
-        return <Wallet className="w-5 h-5 text-[#1A56DB]" />;
+        return <Wallet className="w-5 h-5 text-[#205BE8]" />;
       case 'gamepad-2':
-        return <Gamepad2 className="w-5 h-5 text-[#1A56DB]" />;
+        return <Gamepad2 className="w-5 h-5 text-[#205BE8]" />;
       case 'glasses':
-        return <Glasses className="w-5 h-5 text-[#1A56DB]" />;
+        return <Glasses className="w-5 h-5 text-[#205BE8]" />;
       case 'luggage':
-        return <Luggage className="w-5 h-5 text-[#1A56DB]" />;
+        return <Luggage className="w-5 h-5 text-[#205BE8]" />;
       default:
-        return <LayoutGrid className="w-5 h-5 text-[#1A56DB]" />;
+        return <LayoutGrid className="w-5 h-5 text-[#205BE8]" />;
     }
   };
 
@@ -52,7 +51,7 @@ export const CategoriesView: React.FC = () => {
       {/* Return to home button */}
       <button
         onClick={() => setActiveTab('home')}
-        className="inline-flex items-center gap-2 text-sm font-bold text-[#1C1A17] hover:text-[#1A56DB] mb-6 cursor-pointer"
+        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] dark:hover:text-[#3B82F6] mb-6 cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Home</span>
@@ -60,15 +59,15 @@ export const CategoriesView: React.FC = () => {
 
       {/* Title & subtitle */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1C1A17] tracking-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
           Explore Product Categories
         </h1>
-        <p className="text-xs sm:text-sm text-[#6B645A] mt-1.5 max-w-xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-1.5 max-w-xl leading-relaxed">
           Select any department below to view our curated selection of high-fidelity gear, everyday carry packs, and workspace tech.
         </p>
       </div>
 
-      {/* Grid of the 8 categories with real photo, count, and click action */}
+      {/* Grid of the 8 categories with clean card layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {CATEGORIES.map((cat) => {
           const count = countsByCategory[cat.id] || 0;
@@ -76,10 +75,10 @@ export const CategoriesView: React.FC = () => {
             <button
               key={cat.id}
               onClick={() => handleCategorySelect(cat.id)}
-              className="group bg-[#FFFEFB] border border-[#E3DDD2] hover:border-[#1A56DB] rounded-2xl p-5 flex flex-col justify-between text-left transition-all shadow-warm hover:shadow-warm-hover focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#1A56DB] cursor-pointer"
+              className="group bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] hover:border-[#205BE8] dark:hover:border-[#205BE8] rounded-2xl p-5 flex flex-col justify-between text-left transition-all shadow-warm hover:shadow-warm-hover focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#205BE8] cursor-pointer"
             >
-              {/* Image Frame */}
-              <div className="w-full aspect-square bg-[#ECE8E0] rounded-xl overflow-hidden mb-4 p-3 flex items-center justify-center relative">
+              {/* Image Frame with soft surface */}
+              <div className="w-full aspect-square bg-[#F0EDE6] dark:bg-[#221F1B] rounded-xl overflow-hidden mb-4 p-3 flex items-center justify-center relative border border-[#E7E1D7]/50 dark:border-[#332E28]/50">
                 <AssetSlot
                   src={cat.image || '/products/classic-backpack.webp'}
                   alt={`${cat.name} category preview`}
@@ -87,8 +86,8 @@ export const CategoriesView: React.FC = () => {
                   aspectRatio="aspect-square"
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                 />
-                {/* Category Icon Badge */}
-                <div className="absolute top-2.5 left-2.5 w-8 h-8 rounded-lg bg-[#FFFEFB]/90 backdrop-blur-xs border border-[#E3DDD2] flex items-center justify-center shadow-2xs">
+                {/* Category Icon Badge with glassmorphism */}
+                <div className="absolute top-2.5 left-2.5 w-8 h-8 rounded-lg bg-[#FFFFFF]/90 dark:bg-[#1C1916]/90 backdrop-blur-xs border border-[#E7E1D7] dark:border-[#332E28] flex items-center justify-center shadow-xs">
                   {getCategoryIcon(cat.iconName)}
                 </div>
               </div>
@@ -96,12 +95,12 @@ export const CategoriesView: React.FC = () => {
               {/* Title & Count */}
               <div>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-base font-bold text-[#1C1A17] group-hover:text-[#1A56DB] transition-colors">
+                  <h3 className="text-base font-bold text-[#201F1D] dark:text-[#F3EFE8] group-hover:text-[#205BE8] dark:group-hover:text-[#3B82F6] transition-colors">
                     {cat.name}
                   </h3>
-                  <ArrowRight className="w-4 h-4 text-[#6B645A] group-hover:text-[#1A56DB] group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-[#777269] dark:text-[#A59D91] group-hover:text-[#205BE8] dark:group-hover:text-[#3B82F6] group-hover:translate-x-1 transition-all" />
                 </div>
-                <p className="text-xs text-[#6B645A] mt-1 font-medium">
+                <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-1 font-medium">
                   {count} {count === 1 ? 'item available' : 'items available'}
                 </p>
               </div>

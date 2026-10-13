@@ -26,13 +26,13 @@ import { NotFoundView } from './components/common/NotFoundView';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { PRODUCTS } from './data/products';
 
-// Lazy load WalkingCat so first paint is never delayed (Task D & Checklist 9)
+// Lazy load WalkingCat so first paint is never delayed
 const WalkingCat = React.lazy(() => import('./components/cat/WalkingCat'));
 
 const MainContent: React.FC = () => {
   const { activeTab, setActiveTab, selectedProduct, setSelectedProduct } = useStore();
 
-  // Dynamic meta title and description per page (Checklist Item 6)
+  // Dynamic meta title and description per page
   useEffect(() => {
     let title = 'Bomato — Everyday Tech & Lifestyle Essentials';
     let desc =
@@ -81,7 +81,6 @@ const MainContent: React.FC = () => {
     if (metaDesc) metaDesc.setAttribute('content', desc);
   }, [activeTab, selectedProduct]);
 
-  // If a product is selected and activeTab is product-detail, render the Spin Viewer
   if (activeTab === 'product-detail' && selectedProduct) {
     return (
       <ProductSpinViewer
@@ -91,7 +90,6 @@ const MainContent: React.FC = () => {
     );
   }
 
-  // Routing switch
   switch (activeTab) {
     case 'shop':
       return <ShopView />;
@@ -118,7 +116,7 @@ const MainContent: React.FC = () => {
     case 'home':
       return (
         <div className="space-y-10 animate-in fade-in pb-12">
-          {/* Hero Banner (uses warm panel color) */}
+          {/* Hero Banner */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
             <HeroBanner />
           </div>
@@ -129,18 +127,18 @@ const MainContent: React.FC = () => {
           </div>
 
           {/* Featured Products Section with rhythmic panel backdrop */}
-          <div className="bg-[#ECE8E0]/70 py-10 border-y border-[#E3DDD2]">
+          <div className="bg-[#F0EDE6]/60 dark:bg-[#1C1916]/60 py-10 border-y border-[#E7E1D7] dark:border-[#332E28] transition-colors">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#1C1A17] tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
                     Featured Products
                   </h2>
-                  <p className="text-xs text-[#6B645A] mt-0.5">Top-rated accessories crafted for endurance</p>
+                  <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-0.5">Top-rated accessories crafted for endurance</p>
                 </div>
                 <button
                   onClick={() => setActiveTab('shop')}
-                  className="text-xs sm:text-sm font-semibold text-[#1A56DB] hover:text-[#1646B0] inline-flex items-center gap-1 cursor-pointer transition-colors"
+                  className="text-xs sm:text-sm font-semibold text-[#205BE8] dark:text-[#3B82F6] hover:text-[#174AC4] inline-flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <span>View All Products</span>
                   <ArrowRight className="w-4 h-4" />
@@ -166,18 +164,18 @@ const MainContent: React.FC = () => {
           </div>
 
           {/* New Arrivals Section with rhythmic panel backdrop */}
-          <div className="bg-[#ECE8E0]/70 py-10 border-y border-[#E3DDD2]">
+          <div className="bg-[#F0EDE6]/60 dark:bg-[#1C1916]/60 py-10 border-y border-[#E7E1D7] dark:border-[#332E28] transition-colors">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#1C1A17] tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
                     New Arrivals
                   </h2>
-                  <p className="text-xs text-[#6B645A] mt-0.5">Freshly released tech and lifestyle essentials</p>
+                  <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-0.5">Freshly released tech and lifestyle essentials</p>
                 </div>
                 <button
                   onClick={() => setActiveTab('new-arrivals')}
-                  className="text-xs sm:text-sm font-semibold text-[#1A56DB] hover:text-[#1646B0] inline-flex items-center gap-1 cursor-pointer transition-colors"
+                  className="text-xs sm:text-sm font-semibold text-[#205BE8] dark:text-[#3B82F6] hover:text-[#174AC4] inline-flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <span>View All New Arrivals</span>
                   <ArrowRight className="w-4 h-4" />
@@ -202,8 +200,8 @@ export default function App() {
   return (
     <ErrorBoundary>
       <StoreProvider>
-        <div className="min-h-screen flex flex-col bg-[#F5F2EC] text-[#1C1A17] font-['Plus_Jakarta_Sans'] antialiased relative">
-          {/* Static grain overlay (feTurbulence SVG, ~3.5% opacity, pointer-events: none) */}
+        <div className="min-h-screen flex flex-col bg-[#F7F5F0] dark:bg-[#141210] text-[#201F1D] dark:text-[#F3EFE8] font-['Plus_Jakarta_Sans'] antialiased relative transition-colors duration-200">
+          {/* Static grain overlay */}
           <div className="grain-overlay" aria-hidden="true" />
 
           {/* Header */}
@@ -222,7 +220,7 @@ export default function App() {
           <AuthModal />
           <CookieBanner />
 
-          {/* 3D Mascot Cat along bottom edge (Three.js Draco GLB loader with fallback) */}
+          {/* 3D Mascot Cat along bottom edge */}
           <React.Suspense fallback={null}>
             <WalkingCat />
           </React.Suspense>

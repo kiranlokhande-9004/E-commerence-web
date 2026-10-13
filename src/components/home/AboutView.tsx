@@ -3,7 +3,6 @@ import { ArrowLeft, ShieldCheck, Sparkles, Truck, Mail, CheckCircle2, Send } fro
 import { useStore } from '../../context/StoreContext';
 import { AssetSlot } from '../common/AssetSlot';
 
-// SAMPLE - replace with real data
 const ABOUT_SAMPLE_CONFIG = {
   customerSupportEmail: 'support@bomatoessentials.com',
   inquiryHours: 'Monday – Friday, 9:00 AM – 6:00 PM EST',
@@ -17,7 +16,7 @@ export const AboutView: React.FC = () => {
     name: '',
     email: '',
     message: '',
-    botTrap: '', // Honeypot field
+    botTrap: '',
   });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,7 +34,6 @@ export const AboutView: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Honeypot check
     if (formData.botTrap) {
       setIsSubmitted(true);
       return;
@@ -67,29 +65,29 @@ export const AboutView: React.FC = () => {
       {/* Return to home */}
       <button
         onClick={() => setActiveTab('home')}
-        className="inline-flex items-center gap-2 text-sm font-bold text-[#1C1A17] hover:text-[#1A56DB] cursor-pointer"
+        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] dark:hover:text-[#3B82F6] cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Home</span>
       </button>
 
       {/* Hero & Brand Story */}
-      <div className="bg-[#FFFEFB] border border-[#E3DDD2] rounded-3xl p-6 sm:p-10 shadow-warm">
+      <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-6 sm:p-10 shadow-warm transition-colors">
         <div className="max-w-2xl mx-auto text-center space-y-3 mb-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#1A56DB] font-mono">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#205BE8] dark:text-[#60A5FA] font-mono">
             Craftsmanship & Everyday Utility
           </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#1C1A17] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
             About Bomato
           </h1>
-          <p className="text-sm text-[#6B645A] leading-relaxed">
+          <p className="text-sm text-[#777269] dark:text-[#A59D91] leading-relaxed">
             Bomato designs and curates durable everyday technology gear, high-fidelity audio equipment, and resilient travel accessories. We prioritize tactile materials, functional ergonomics, and timeless design over disposable trends.
           </p>
         </div>
 
-        {/* 3 Real Product Photo Showcase (using only existing public assets) */}
+        {/* 3 Real Product Photo Showcase */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
-          <div className="bg-[#ECE8E0] rounded-2xl p-4 border border-[#E3DDD2] flex flex-col items-center">
+          <div className="bg-[#F0EDE6] dark:bg-[#221F1B] rounded-2xl p-4 border border-[#E7E1D7] dark:border-[#332E28] flex flex-col items-center">
             <div className="w-full aspect-square">
               <AssetSlot
                 src="/hero/showcase-hero.webp"
@@ -98,10 +96,10 @@ export const AboutView: React.FC = () => {
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
-            <span className="text-xs font-bold text-[#1C1A17] mt-3">Curated Showcase</span>
+            <span className="text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] mt-3">Curated Showcase</span>
           </div>
 
-          <div className="bg-[#ECE8E0] rounded-2xl p-4 border border-[#E3DDD2] flex flex-col items-center">
+          <div className="bg-[#F0EDE6] dark:bg-[#221F1B] rounded-2xl p-4 border border-[#E7E1D7] dark:border-[#332E28] flex flex-col items-center">
             <div className="w-full aspect-square">
               <AssetSlot
                 src="/products/classic-backpack.webp"
@@ -110,10 +108,10 @@ export const AboutView: React.FC = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="text-xs font-bold text-[#1C1A17] mt-3">Ergonomic Carry</span>
+            <span className="text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] mt-3">Ergonomic Carry</span>
           </div>
 
-          <div className="bg-[#ECE8E0] rounded-2xl p-4 border border-[#E3DDD2] flex flex-col items-center">
+          <div className="bg-[#F0EDE6] dark:bg-[#221F1B] rounded-2xl p-4 border border-[#E7E1D7] dark:border-[#332E28] flex flex-col items-center">
             <div className="w-full aspect-square">
               <AssetSlot
                 src="/products/wh-1000xm5.webp"
@@ -122,38 +120,38 @@ export const AboutView: React.FC = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="text-xs font-bold text-[#1C1A17] mt-3">Acoustic Precision</span>
+            <span className="text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] mt-3">Acoustic Precision</span>
           </div>
         </div>
 
         {/* 3 Value Blocks */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[#E3DDD2]">
-          <div className="p-5 bg-[#ECE8E0]/50 rounded-2xl border border-[#E3DDD2] text-center space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-[#1A56DB]/10 text-[#1A56DB] mx-auto flex items-center justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[#E7E1D7] dark:border-[#332E28]">
+          <div className="p-5 bg-[#F0EDE6]/50 dark:bg-[#221F1B]/60 rounded-2xl border border-[#E7E1D7] dark:border-[#332E28] text-center space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-[#205BE8]/10 text-[#205BE8] dark:text-[#60A5FA] mx-auto flex items-center justify-center">
               <Sparkles className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-[#1C1A17]">1. Curated Quality</h3>
-            <p className="text-xs text-[#6B645A] leading-relaxed">
+            <h3 className="text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8]">1. Curated Quality</h3>
+            <p className="text-xs text-[#777269] dark:text-[#A59D91] leading-relaxed">
               Every item is tested for material durability, tactile response, and seamless compatibility with modern mobile ecosystems.
             </p>
           </div>
 
-          <div className="p-5 bg-[#ECE8E0]/50 rounded-2xl border border-[#E3DDD2] text-center space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
+          <div className="p-5 bg-[#F0EDE6]/50 dark:bg-[#221F1B]/60 rounded-2xl border border-[#E7E1D7] dark:border-[#332E28] text-center space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 mx-auto flex items-center justify-center">
               <Truck className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-[#1C1A17]">2. Swift Logistics</h3>
-            <p className="text-xs text-[#6B645A] leading-relaxed">
+            <h3 className="text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8]">2. Swift Logistics</h3>
+            <p className="text-xs text-[#777269] dark:text-[#A59D91] leading-relaxed">
               Orders are packaged with recycled protective materials and dispatched with clear tracking updates.
             </p>
           </div>
 
-          <div className="p-5 bg-[#ECE8E0]/50 rounded-2xl border border-[#E3DDD2] text-center space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-indigo-100 text-[#1A56DB] mx-auto flex items-center justify-center">
+          <div className="p-5 bg-[#F0EDE6]/50 dark:bg-[#221F1B]/60 rounded-2xl border border-[#E7E1D7] dark:border-[#332E28] text-center space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/40 text-[#205BE8] dark:text-[#60A5FA] mx-auto flex items-center justify-center">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-bold text-[#1C1A17]">3. Transparent Support</h3>
-            <p className="text-xs text-[#6B645A] leading-relaxed">
+            <h3 className="text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8]">3. Transparent Support</h3>
+            <p className="text-xs text-[#777269] dark:text-[#A59D91] leading-relaxed">
               Straightforward 30-day exchange policy with direct customer support for repairs, firmware tips, and warranty claims.
             </p>
           </div>
@@ -161,26 +159,26 @@ export const AboutView: React.FC = () => {
       </div>
 
       {/* Contact Form Section */}
-      <div className="bg-[#FFFEFB] border border-[#E3DDD2] rounded-3xl p-6 sm:p-10 shadow-warm">
+      <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-6 sm:p-10 shadow-warm transition-colors">
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-6">
-            <div className="w-10 h-10 rounded-xl bg-[#1A56DB]/10 text-[#1A56DB] mx-auto flex items-center justify-center mb-3">
+            <div className="w-10 h-10 rounded-xl bg-[#205BE8]/10 text-[#205BE8] dark:text-[#60A5FA] mx-auto flex items-center justify-center mb-3">
               <Mail className="w-5 h-5" />
             </div>
-            <h2 className="text-2xl font-extrabold text-[#1C1A17]">Get in Touch</h2>
-            <p className="text-xs sm:text-sm text-[#6B645A] mt-1">
+            <h2 className="text-2xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8]">Get in Touch</h2>
+            <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-1">
               Have questions regarding sizing, specs, or shipping status? Drop us a note below.
             </p>
-            <p className="text-xs text-[#6B645A]/80 mt-1 italic">
-              Support email: <span className="font-semibold text-[#1C1A17]">{ABOUT_SAMPLE_CONFIG.customerSupportEmail}</span> · {ABOUT_SAMPLE_CONFIG.responseWindow}
+            <p className="text-xs text-[#777269]/80 dark:text-[#A59D91]/80 mt-1 italic">
+              Support email: <span className="font-semibold text-[#201F1D] dark:text-[#F3EFE8]">{ABOUT_SAMPLE_CONFIG.customerSupportEmail}</span> · {ABOUT_SAMPLE_CONFIG.responseWindow}
             </p>
           </div>
 
           {isSubmitted ? (
-            <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-2 animate-in fade-in">
-              <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
-              <h3 className="text-base font-bold text-emerald-900">Message Received</h3>
-              <p className="text-xs text-emerald-700">
+            <div className="p-6 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 rounded-2xl text-center space-y-2 animate-in fade-in">
+              <CheckCircle2 className="w-10 h-10 text-emerald-600 dark:text-emerald-400 mx-auto" />
+              <h3 className="text-base font-bold text-emerald-900 dark:text-emerald-200">Message Received</h3>
+              <p className="text-xs text-emerald-700 dark:text-emerald-300">
                 Thank you for reaching out, {formData.name || 'there'}! Our team will review your inquiry and follow up at {formData.email}.
               </p>
               <button
@@ -195,7 +193,6 @@ export const AboutView: React.FC = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Honeypot field (hidden from real users) */}
               <div className="hidden" aria-hidden="true">
                 <input
                   name="botTrap"
@@ -208,7 +205,7 @@ export const AboutView: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#1C1A17] uppercase mb-1">
+                <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
                   Full Name *
                 </label>
                 <input
@@ -217,10 +214,10 @@ export const AboutView: React.FC = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="e.g. Alex Morgan"
-                  className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFEFB] border rounded-xl text-[#1C1A17] placeholder-[#6B645A] focus:outline-hidden transition-colors ${
+                  className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
                     formErrors.name
                       ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                      : 'border-[#E3DDD2] focus:border-[#1A56DB] focus:ring-2 focus:ring-[#1A56DB]/20'
+                      : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                   }`}
                 />
                 {formErrors.name && (
@@ -229,7 +226,7 @@ export const AboutView: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#1C1A17] uppercase mb-1">
+                <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
                   Email Address *
                 </label>
                 <input
@@ -238,10 +235,10 @@ export const AboutView: React.FC = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="alex@domain.com"
-                  className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFEFB] border rounded-xl text-[#1C1A17] placeholder-[#6B645A] focus:outline-hidden transition-colors ${
+                  className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
                     formErrors.email
                       ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                      : 'border-[#E3DDD2] focus:border-[#1A56DB] focus:ring-2 focus:ring-[#1A56DB]/20'
+                      : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                   }`}
                 />
                 {formErrors.email && (
@@ -250,7 +247,7 @@ export const AboutView: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#1C1A17] uppercase mb-1">
+                <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
                   Message *
                 </label>
                 <textarea
@@ -259,10 +256,10 @@ export const AboutView: React.FC = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Tell us what you need help with..."
-                  className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFEFB] border rounded-xl text-[#1C1A17] placeholder-[#6B645A] focus:outline-hidden transition-colors ${
+                  className={`w-full px-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:outline-hidden transition-colors ${
                     formErrors.message
                       ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                      : 'border-[#E3DDD2] focus:border-[#1A56DB] focus:ring-2 focus:ring-[#1A56DB]/20'
+                      : 'border-[#E7E1D7] dark:border-[#332E28] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20'
                   }`}
                 />
                 {formErrors.message && (
@@ -273,7 +270,7 @@ export const AboutView: React.FC = () => {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 px-6 bg-[#1A56DB] hover:bg-[#1646B0] text-white font-bold rounded-xl text-sm shadow-warm transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 px-6 bg-[#205BE8] hover:bg-[#174AC4] text-white font-bold rounded-xl text-sm shadow-warm transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>Send Message</span>

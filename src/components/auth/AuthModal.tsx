@@ -49,16 +49,16 @@ export const AuthModal: React.FC = () => {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto" role="dialog" aria-modal="true">
       <div
-        className="fixed inset-0 bg-[#1F1B17]/50 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-[#141210]/60 backdrop-blur-xs transition-opacity"
         onClick={() => setIsAuthModalOpen(false)}
       />
 
       <div className="min-h-full flex items-center justify-center p-4">
-        <div className="relative bg-[#FFFEFB] rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-warm border border-[#E3DDD2] animate-in fade-in zoom-in-95">
+        <div className="relative bg-[#FFFFFF] dark:bg-[#1C1916] rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-[#E7E1D7] dark:border-[#332E28] animate-in fade-in zoom-in-95 transition-colors">
           {/* Close button */}
           <button
             onClick={() => setIsAuthModalOpen(false)}
-            className="absolute top-5 right-5 p-2 rounded-full text-[#6B645A] hover:text-[#1C1A17] hover:bg-[#ECE8E0] transition-colors cursor-pointer"
+            className="absolute top-5 right-5 p-2 rounded-xl text-[#777269] dark:text-[#A59D91] hover:text-[#201F1D] dark:hover:text-[#F3EFE8] hover:bg-[#F0EDE6] dark:hover:bg-[#221F1B] transition-colors cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -66,28 +66,30 @@ export const AuthModal: React.FC = () => {
 
           {/* Heading */}
           <div className="text-center mb-6">
-            <div className="w-12 h-12 rounded-2xl bg-[#ECE8E0] text-[#1A56DB] mx-auto flex items-center justify-center mb-3">
+            <div className="w-12 h-12 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] dark:text-[#3B82F6] mx-auto flex items-center justify-center mb-3 border border-[#E7E1D7] dark:border-[#332E28]">
               <User className="w-6 h-6" />
             </div>
-            <h2 className="text-2xl font-extrabold text-[#1C1A17]">
+            <h2 className="text-2xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
               {mode === 'login' ? 'Customer Sign In' : 'Create Customer Account'}
             </h2>
-            <p className="text-xs text-[#6B645A] mt-1">
+            <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-1">
               {mode === 'login'
                 ? 'Welcome back to Bomato. Access saved carts & orders.'
                 : 'Join Bomato for priority shipping and members-only deals.'}
             </p>
           </div>
 
-          {/* Tabs */}
-          <div className="grid grid-cols-2 p-1 bg-[#ECE8E0] rounded-xl mb-6">
+          {/* Segmented Tabs with Soft Depth */}
+          <div className="grid grid-cols-2 p-1 bg-[#F0EDE6] dark:bg-[#221F1B] rounded-xl mb-6 border border-[#E7E1D7] dark:border-[#332E28]">
             <button
               onClick={() => {
                 setMode('login');
                 setErrors({});
               }}
               className={`py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                mode === 'login' ? 'bg-[#FFFEFB] text-[#1C1A17] shadow-xs' : 'text-[#6B645A] hover:text-[#1C1A17]'
+                mode === 'login'
+                  ? 'bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8] shadow-xs'
+                  : 'text-[#777269] dark:text-[#A59D91] hover:text-[#201F1D] dark:hover:text-[#F3EFE8]'
               }`}
             >
               Sign In
@@ -98,7 +100,9 @@ export const AuthModal: React.FC = () => {
                 setErrors({});
               }}
               className={`py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                mode === 'register' ? 'bg-[#FFFEFB] text-[#1C1A17] shadow-xs' : 'text-[#6B645A] hover:text-[#1C1A17]'
+                mode === 'register'
+                  ? 'bg-[#FFFFFF] dark:bg-[#1C1916] text-[#201F1D] dark:text-[#F3EFE8] shadow-xs'
+                  : 'text-[#777269] dark:text-[#A59D91] hover:text-[#201F1D] dark:hover:text-[#F3EFE8]'
               }`}
             >
               Create Account
@@ -106,7 +110,6 @@ export const AuthModal: React.FC = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Honeypot field */}
             <div className="hidden" aria-hidden="true">
               <input
                 type="text"
@@ -119,17 +122,17 @@ export const AuthModal: React.FC = () => {
 
             {mode === 'register' && (
               <div>
-                <label className="block text-xs font-bold text-[#1C1A17] uppercase mb-1">
+                <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
                   Full Name
                 </label>
                 <div className="relative">
-                  <User className="w-4 h-4 text-[#6B645A] absolute left-3 top-3 pointer-events-none" />
+                  <User className="w-4 h-4 text-[#777269] dark:text-[#A59D91] absolute left-3 top-3 pointer-events-none" />
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                     placeholder="Kiran Lokhande"
-                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFEFB] border border-[#E3DDD2] rounded-xl text-[#1C1A17] placeholder-[#6B645A] focus:border-[#1A56DB] focus:ring-2 focus:ring-[#1A56DB]/20 focus:outline-hidden"
+                    className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
                   />
                 </div>
                 {errors.name && <p className="text-xs text-red-500 mt-1 font-medium">{errors.name}</p>}
@@ -137,34 +140,34 @@ export const AuthModal: React.FC = () => {
             )}
 
             <div>
-              <label className="block text-xs font-bold text-[#1C1A17] uppercase mb-1">
+              <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#6B645A] absolute left-3 top-3 pointer-events-none" />
+                <Mail className="w-4 h-4 text-[#777269] dark:text-[#A59D91] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                   placeholder="name@example.com"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFEFB] border border-[#E3DDD2] rounded-xl text-[#1C1A17] placeholder-[#6B645A] focus:border-[#1A56DB] focus:ring-2 focus:ring-[#1A56DB]/20 focus:outline-hidden"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
                 />
               </div>
               {errors.email && <p className="text-xs text-red-500 mt-1 font-medium">{errors.email}</p>}
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#1C1A17] uppercase mb-1">
+              <label className="block text-xs font-bold text-[#201F1D] dark:text-[#F3EFE8] uppercase mb-1">
                 Password
               </label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-[#6B645A] absolute left-3 top-3 pointer-events-none" />
+                <Lock className="w-4 h-4 text-[#777269] dark:text-[#A59D91] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="password"
                   value={formData.password}
                   onChange={(e) => setFormData((p) => ({ ...p, password: e.target.value }))}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFEFB] border border-[#E3DDD2] rounded-xl text-[#1C1A17] placeholder-[#6B645A] focus:border-[#1A56DB] focus:ring-2 focus:ring-[#1A56DB]/20 focus:outline-hidden"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-sm bg-[#FFFFFF] dark:bg-[#221F1B] border border-[#E7E1D7] dark:border-[#332E28] rounded-xl text-[#201F1D] dark:text-[#F3EFE8] placeholder-[#777269] dark:placeholder-[#A59D91] focus:border-[#205BE8] focus:ring-2 focus:ring-[#205BE8]/20 focus:outline-hidden"
                 />
               </div>
               {errors.password && (
@@ -175,7 +178,7 @@ export const AuthModal: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-4 bg-[#1A56DB] hover:bg-[#1646B0] text-white font-bold rounded-xl text-sm shadow-warm transition-all cursor-pointer mt-2"
+              className="w-full py-3 px-4 bg-[#205BE8] hover:bg-[#174AC4] text-white font-bold rounded-xl text-sm shadow-warm transition-all cursor-pointer mt-2 disabled:opacity-50"
             >
               {isSubmitting
                 ? 'Authenticating...'

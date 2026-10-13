@@ -7,7 +7,6 @@ import { ProductCard } from '../product/ProductCard';
 export const DealsView: React.FC = () => {
   const { setActiveTab } = useStore();
 
-  // Filter products with active discount, sorted by largest discount percent descending
   const dealProducts = useMemo(() => {
     return PRODUCTS.filter(
       (p) =>
@@ -20,7 +19,6 @@ export const DealsView: React.FC = () => {
     });
   }, []);
 
-  // Countdown timer derived from SALE_ENDS_AT
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
     hours: number;
@@ -75,19 +73,19 @@ export const DealsView: React.FC = () => {
       {/* Return to shop */}
       <button
         onClick={() => setActiveTab('shop')}
-        className="inline-flex items-center gap-2 text-sm font-bold text-[#1C1A17] hover:text-[#1A56DB] mb-6 cursor-pointer"
+        className="inline-flex items-center gap-2 text-sm font-bold text-[#201F1D] dark:text-[#F3EFE8] hover:text-[#205BE8] dark:hover:text-[#3B82F6] mb-6 cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Shop</span>
       </button>
 
       {/* Header and Countdown */}
-      <div className="bg-[#1F1B17] text-[#ECE8E0] rounded-3xl p-6 sm:p-8 mb-8 border border-[#2D2722] shadow-warm">
+      <div className="bg-[#181614] dark:bg-[#1C1916] text-[#ECE8E0] rounded-3xl p-6 sm:p-8 mb-8 border border-[#2B2724] dark:border-[#332E28] shadow-2xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 text-amber-400 text-xs font-bold tracking-wider uppercase">
               <Zap className="w-3.5 h-3.5 fill-amber-400" />
-              <span>Limited-Time Price Cuts</span>
+              <span>Limited-Time Markdowns</span>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#FFFEFB] tracking-tight">
               Featured Deals & Discounts
@@ -97,36 +95,36 @@ export const DealsView: React.FC = () => {
             </p>
           </div>
 
-          {/* Countdown timer - shown only if SALE_ENDS_AT is configured and not expired */}
+          {/* Countdown timer */}
           {timeLeft && !timeLeft.isExpired && (
-            <div className="bg-[#2D2722] border border-[#3E362F] rounded-2xl p-4 shrink-0">
+            <div className="bg-[#24201C] border border-[#38312A] rounded-2xl p-4 shrink-0 shadow-inner">
               <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">
                 <Clock className="w-4 h-4" />
                 <span>Sale Ends In</span>
               </div>
               <div className="flex items-center gap-2 text-center">
-                <div className="bg-[#1F1B17] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#3E362F]">
+                <div className="bg-[#181614] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#38312A]">
                   <span className="font-mono text-lg font-bold text-[#FFFEFB] tabular-nums">
                     {formatNumber(timeLeft.days)}
                   </span>
                   <span className="block text-[9px] text-[#ECE8E0]/60 uppercase">Days</span>
                 </div>
                 <span className="text-[#ECE8E0]/40 font-bold">:</span>
-                <div className="bg-[#1F1B17] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#3E362F]">
+                <div className="bg-[#181614] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#38312A]">
                   <span className="font-mono text-lg font-bold text-[#FFFEFB] tabular-nums">
                     {formatNumber(timeLeft.hours)}
                   </span>
                   <span className="block text-[9px] text-[#ECE8E0]/60 uppercase">Hours</span>
                 </div>
                 <span className="text-[#ECE8E0]/40 font-bold">:</span>
-                <div className="bg-[#1F1B17] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#3E362F]">
+                <div className="bg-[#181614] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#38312A]">
                   <span className="font-mono text-lg font-bold text-[#FFFEFB] tabular-nums">
                     {formatNumber(timeLeft.minutes)}
                   </span>
                   <span className="block text-[9px] text-[#ECE8E0]/60 uppercase">Mins</span>
                 </div>
                 <span className="text-[#ECE8E0]/40 font-bold">:</span>
-                <div className="bg-[#1F1B17] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#3E362F]">
+                <div className="bg-[#181614] rounded-lg px-2.5 py-1.5 min-w-[48px] border border-[#38312A]">
                   <span className="font-mono text-lg font-bold text-[#FFFEFB] tabular-nums">
                     {formatNumber(timeLeft.seconds)}
                   </span>
@@ -142,8 +140,8 @@ export const DealsView: React.FC = () => {
       {dealProducts.length > 0 ? (
         <div>
           <div className="flex items-center justify-between mb-4">
-            <p className="text-xs sm:text-sm font-semibold text-[#6B645A]">
-              Showing <span className="text-[#1C1A17] font-bold">{dealProducts.length}</span> items with active promotional pricing
+            <p className="text-xs sm:text-sm font-semibold text-[#777269] dark:text-[#A59D91]">
+              Showing <span className="text-[#201F1D] dark:text-[#F3EFE8] font-bold">{dealProducts.length}</span> items with active promotional pricing
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -153,18 +151,17 @@ export const DealsView: React.FC = () => {
           </div>
         </div>
       ) : (
-        /* Friendly empty state with button back to shop */
-        <div className="bg-[#FFFEFB] border border-[#E3DDD2] rounded-3xl p-12 text-center shadow-warm max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-[#ECE8E0] text-[#1A56DB] flex items-center justify-center mx-auto mb-4">
+        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] rounded-3xl p-12 text-center shadow-warm max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-2xl bg-[#F0EDE6] dark:bg-[#221F1B] text-[#205BE8] flex items-center justify-center mx-auto mb-4">
             <Sparkles className="w-8 h-8" />
           </div>
-          <h2 className="text-xl font-bold text-[#1C1A17]">No Active Deals Right Now</h2>
-          <p className="text-xs sm:text-sm text-[#6B645A] mt-2 mb-6">
+          <h2 className="text-xl font-bold text-[#201F1D] dark:text-[#F3EFE8]">No Active Deals Right Now</h2>
+          <p className="text-xs sm:text-sm text-[#777269] dark:text-[#A59D91] mt-2 mb-6">
             All promotional inventory has currently concluded. Check back soon or explore our complete catalog.
           </p>
           <button
             onClick={() => setActiveTab('shop')}
-            className="px-6 py-3 bg-[#1A56DB] hover:bg-[#1646B0] text-white font-bold rounded-xl text-sm shadow-warm transition-all cursor-pointer"
+            className="px-6 py-3 bg-[#205BE8] hover:bg-[#174AC4] text-white font-bold rounded-xl text-sm shadow-warm transition-all cursor-pointer"
           >
             Explore Catalog
           </button>

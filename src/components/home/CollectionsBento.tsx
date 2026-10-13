@@ -11,37 +11,37 @@ export const CollectionsBento: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#1C1A17] tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#201F1D] dark:text-[#F3EFE8] tracking-tight">
             Featured Collections
           </h2>
-          <p className="text-xs text-[#6B645A] mt-0.5">Curated gear pairings for every pursuit</p>
+          <p className="text-xs text-[#777269] dark:text-[#A59D91] mt-0.5">Curated gear pairings for every pursuit</p>
         </div>
         <button
           onClick={() => setActiveTab('categories')}
-          className="text-xs sm:text-sm font-semibold text-[#1A56DB] hover:text-[#1646B0] inline-flex items-center gap-1 cursor-pointer transition-colors"
+          className="text-xs sm:text-sm font-semibold text-[#205BE8] dark:text-[#3B82F6] hover:text-[#174AC4] inline-flex items-center gap-1 cursor-pointer transition-colors"
         >
           <span>View All Categories</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
 
-      {/* Grid: 2 Warm Cards */}
+      {/* Grid: 2 Warm Cards with Soft Depth */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Collection 1: Tech Essentials */}
-        <div className="bg-[#FFFEFB] border border-[#E3DDD2] hover:border-[#1A56DB] rounded-2xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover transition-all">
+        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] hover:border-[#205BE8] dark:hover:border-[#205BE8] rounded-2xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover transition-all duration-200">
           <div className="space-y-2 mb-4 z-10">
-            <span className="text-[11px] font-bold text-[#1A56DB] uppercase tracking-wider">
+            <span className="text-[11px] font-bold text-[#205BE8] dark:text-[#60A5FA] uppercase tracking-wider">
               Workspace & Studio
             </span>
-            <h3 className="text-2xl font-extrabold text-[#1C1A17]">Tech Essentials</h3>
-            <p className="text-sm text-[#6B645A]">Smart tech for modern life and daily productivity</p>
+            <h3 className="text-2xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8]">Tech Essentials</h3>
+            <p className="text-sm text-[#777269] dark:text-[#A59D91]">Smart tech for modern life and daily productivity</p>
             <div className="pt-2">
               <button
                 onClick={() => {
                   setSelectedCategory('gaming');
                   setActiveTab('shop');
                 }}
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#1A56DB] hover:text-[#1646B0] uppercase tracking-wider py-2 px-3.5 bg-[#ECE8E0] hover:bg-[#E3DDD2] rounded-xl transition-colors cursor-pointer"
+                className="neu-button inline-flex items-center gap-2 text-xs font-bold text-[#205BE8] dark:text-[#60A5FA] uppercase tracking-wider py-2.5 px-4 bg-[#F0EDE6] dark:bg-[#221F1B] rounded-xl cursor-pointer"
               >
                 <span>Shop Collection</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -50,32 +50,33 @@ export const CollectionsBento: React.FC = () => {
           </div>
 
           <div className="mt-4 flex justify-end">
-            <div className="w-full max-w-[260px] bg-[#ECE8E0]/40 rounded-xl p-3 border border-[#E3DDD2]">
+            <div className="w-full max-w-[260px] bg-[#F0EDE6]/60 dark:bg-[#221F1B]/60 rounded-xl p-3 border border-[#E7E1D7] dark:border-[#332E28]">
               <AssetSlot
                 src="/collections/tech-essentials.webp"
                 alt="Tech Essentials Collection"
                 category="gaming"
                 aspectRatio="aspect-4/3"
+                className="rounded-lg object-contain"
               />
             </div>
           </div>
         </div>
 
         {/* Collection 2: Travel Collection */}
-        <div className="bg-[#FFFEFB] border border-[#E3DDD2] hover:border-[#1A56DB] rounded-2xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover transition-all">
+        <div className="bg-[#FFFFFF] dark:bg-[#1C1916] border border-[#E7E1D7] dark:border-[#332E28] hover:border-[#205BE8] dark:hover:border-[#205BE8] rounded-2xl p-6 sm:p-8 flex flex-col justify-between overflow-hidden relative group shadow-warm hover:shadow-warm-hover transition-all duration-200">
           <div className="space-y-2 mb-4 z-10">
-            <span className="text-[11px] font-bold text-[#1A56DB] uppercase tracking-wider">
+            <span className="text-[11px] font-bold text-[#205BE8] dark:text-[#60A5FA] uppercase tracking-wider">
               Transit & Commute
             </span>
-            <h3 className="text-2xl font-extrabold text-[#1C1A17]">Travel Collection</h3>
-            <p className="text-sm text-[#6B645A]">Built for the journey with weather-resistant durability</p>
+            <h3 className="text-2xl font-extrabold text-[#201F1D] dark:text-[#F3EFE8]">Travel Collection</h3>
+            <p className="text-sm text-[#777269] dark:text-[#A59D91]">Built for the journey with weather-resistant durability</p>
             <div className="pt-2">
               <button
                 onClick={() => {
                   setSelectedCategory('backpacks');
                   setActiveTab('shop');
                 }}
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#1A56DB] hover:text-[#1646B0] uppercase tracking-wider py-2 px-3.5 bg-[#ECE8E0] hover:bg-[#E3DDD2] rounded-xl transition-colors cursor-pointer"
+                className="neu-button inline-flex items-center gap-2 text-xs font-bold text-[#205BE8] dark:text-[#60A5FA] uppercase tracking-wider py-2.5 px-4 bg-[#F0EDE6] dark:bg-[#221F1B] rounded-xl cursor-pointer"
               >
                 <span>Shop Collection</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -84,12 +85,13 @@ export const CollectionsBento: React.FC = () => {
           </div>
 
           <div className="mt-4 flex justify-end">
-            <div className="w-full max-w-[260px] bg-[#ECE8E0]/40 rounded-xl p-3 border border-[#E3DDD2]">
+            <div className="w-full max-w-[260px] bg-[#F0EDE6]/60 dark:bg-[#221F1B]/60 rounded-xl p-3 border border-[#E7E1D7] dark:border-[#332E28]">
               <AssetSlot
                 src="/collections/travel-collection.webp"
                 alt="Travel Collection"
                 category="travel"
                 aspectRatio="aspect-4/3"
+                className="rounded-lg object-contain"
               />
             </div>
           </div>

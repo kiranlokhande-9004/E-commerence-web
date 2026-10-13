@@ -18,8 +18,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('bomato_theme');
+          var isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-[#F5F2EC] text-[#1C1A17] antialiased selection:bg-[#E3DDD2] selection:text-[#1C1A17]">
+  <body class="bg-[#F7F5F0] dark:bg-[#141210] text-[#201F1D] dark:text-[#F3EFE8] antialiased selection:bg-[#205BE8]/20 selection:text-[#201F1D] dark:selection:text-[#F3EFE8]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
