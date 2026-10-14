@@ -12,9 +12,26 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final com.bolt.ecommerce.config.CatalogDataInitializer catalogDataInitializer;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, com.bolt.ecommerce.config.CatalogDataInitializer catalogDataInitializer) {
         this.productService = productService;
+        this.catalogDataInitializer = catalogDataInitializer;
+    }
+
+    /**
+     * POST /api/products/seed or GET /api/products/seed
+     * Idempotently seeds or refreshes the entire product catalog and categories.
+     */
+    @RequestMapping(value = "/seed", method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<java.util.Map<String, Object>> seedCatalog() {
+        catalogDataInitializer.runManualSeed();
+        List<Product> all = productService.getAllProducts(null, null, "featured");
+        return ResponseEntity.ok(java.util.Map.of(
+            "status", "success",
+            "message", "Catalog seeded successfully",
+            "productCount", all.size()
+        ));
     }
 
     /**

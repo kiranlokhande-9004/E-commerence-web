@@ -199,7 +199,7 @@ public class ProductDao {
         List<Object> params = new ArrayList<>();
 
         if (category != null && !category.trim().isEmpty()) {
-            sql.append(" AND (category_id = ? OR category = ?)");
+            sql.append(" AND (LOWER(category_id) = LOWER(?) OR LOWER(category) = LOWER(?))");
             params.add(category.trim());
             params.add(category.trim());
         }
